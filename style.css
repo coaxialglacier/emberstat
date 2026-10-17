@@ -298,86 +298,50 @@ body::after {
   margin: 3.6cqi 0 0;
   padding-top: 2.6cqi;
   border-top: 1px solid rgba(214, 205, 187, .24);
-  font: clamp(10px, 2.15cqi, 13px)/1 var(--mono);
+  font: clamp(8.5px, 2.15cqi, 13px)/1 var(--mono);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--amber);
   text-shadow: 0 0 8px rgba(255, 140, 30, .4);
 }
+.lockup__tags span { white-space: nowrap; }
 /* Letter spacing follows the last letter too; pull it back to the R's edge. */
 .lockup__tags span:last-child { margin-right: -.2em; }
 
-/* ---------- Spec strip ---------- */
+/* ---------- Spec line ----------
+   One line of figures between thin double rules, as in the credit lines on
+   early-1990s box covers and novel covers. */
 
-.spec {
-  display: flex;
-  align-items: center;
-  gap: 18px 32px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(214, 205, 187, .14);
-}
-
-.spec__list {
+.credits__line {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 36px;
+  justify-content: space-between;
+  gap: 8px 28px;
   margin: 0;
+  padding: 11px 0 10px;
+  border-top: 3px double rgba(214, 205, 187, .45);
+  border-bottom: 3px double rgba(214, 205, 187, .45);
 }
-
-.spec__list dt {
-  font-size: 10px;
-  letter-spacing: .2em;
+.credits__line > div { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.credits__line dt {
+  font-size: 9.5px;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--amber);
   text-shadow: 0 0 7px rgba(255, 140, 30, .35);
 }
-
-.spec__list dd {
-  margin: 3px 0 0;
-  font: 11px/1.5 var(--wide);
-  letter-spacing: .03em;
+.credits__line dd {
+  margin: 0;
+  font: 11px/1.4 var(--wide);
+  letter-spacing: .1em;
+  text-transform: uppercase;
   color: var(--beige);
-  white-space: nowrap;
 }
-
-/* Michroma's degree sign sits low; Space Mono's sits at cap height. */
-.spec__list .deg { font-family: var(--mono); }
-
-.spec__list small {
-  display: block;
-  font: 9px/1.5 var(--mono);
-  letter-spacing: .06em;
-  color: var(--beige-dim);
-}
-
-/* Dymo embossed label tape: black tape, raised white capitals. */
-.dymo {
-  flex: none;
-  padding: 5px 11px 4px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #2b2b2b 0%, #121212 45%, #0c0c0c 70%, #1d1d1d 100%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .07);
-  color: #f1eee6;
-  font: 700 11px/1 var(--mono);
-  letter-spacing: .24em;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .9), 0 1px 0 rgba(255, 255, 255, .18);
-  rotate: -1.2deg;
-}
-
-/* The black "01" number tag, as on the case. */
-.tag {
-  flex: none;
-  margin-left: auto;
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  background: #050505;
-  border: 1px solid var(--charcoal-line);
-  color: #f2f0ea;
-  font: 12px/1 var(--wide);
-  letter-spacing: .04em;
-}
+/* Units keep their case; Michroma's degree sign sits low, Space Mono's at cap height. */
+.credits__line .unit { text-transform: none; }
+.credits__line .deg { font-family: var(--mono); }
+.credits sup { font-family: var(--mono); font-size: .85em; line-height: 0; vertical-align: .45em; color: var(--amber); }
+.credits__note { margin: 7px 0 0; font-size: 9.5px; letter-spacing: .08em; text-align: right; color: var(--beige-dim); }
 
 /* ---------- Layout: portrait screens (phones) ---------- */
 /* Same media query as the <source> that picks the phone crop. */
@@ -436,17 +400,10 @@ body::after {
     padding: 0 var(--side);
   }
 
-  .spec { flex-wrap: wrap; align-items: flex-start; }
-  .spec__list {
-    order: 2;
-    flex-basis: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 18px;
-  }
-  .spec__list dd { white-space: normal; }
-  .spec__list > div:first-child { grid-column: 1 / -1; }
-  .spec__list > div:last-child { grid-column: 1 / -1; }
+  .credits__line { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; padding: 12px 0; }
+  .credits__line > div { flex-direction: column; gap: 3px; white-space: normal; }
+  .credits__line > div:first-child { grid-column: 1 / -1; }
+  .credits__note { text-align: left; }
 }
 
 /* ---------- Sequence (only with JavaScript) ---------- */
@@ -496,9 +453,9 @@ body::after {
 .js .wm-sub { transition: opacity .8s ease-out 1.1s; }
 
 .js .opening:not(.is-done) .lockup,
-.js .opening:not(.is-done) .spec { opacity: 0; translate: 0 6px; }
-.js .lockup, .js .spec { transition: opacity .9s ease-out, translate .9s ease-out; }
-.js .spec { transition-delay: .25s; }
+.js .opening:not(.is-done) .credits { opacity: 0; translate: 0 6px; }
+.js .lockup, .js .credits { transition: opacity .9s ease-out, translate .9s ease-out; }
+.js .credits { transition-delay: .25s; }
 
 .js .opening:not(.is-done) .replay { opacity: 0; pointer-events: none; }
 .js .replay { transition: opacity .6s, color .2s, border-color .2s; }
