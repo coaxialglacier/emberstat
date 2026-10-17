@@ -209,22 +209,41 @@
     return node;
   };
 
-  // The fixed scale on the right: 0 at the top (OFF) to 180 at the bottom.
+  // The thermostat's face, as measured from photos of the knob and the bare
+  // shaft (MEASUREMENTS.md, "Dial travel"). Angles there are counter-clockwise
+  // from the right, seen from the front; SVG angles are clockwise, so svg = -a.
+  // The knob's pointer sits about 21 degrees counter-clockwise of the shaft's
+  // flat when the dial is turned up. At the LO stop the flat faces 211, so the
+  // pointer reads 232; OFF is 20 degrees of travel past the stop, so at OFF it
+  // points to 212, just short of the printed LO mark, and each degree of
+  // travel turns it one degree clockwise. ON starts at 120 of travel (94).
+  const MARKS = [['LO', 208], ['50', 169], ['60', 128], ['80', 51], ['90', 11]];
+  const COMFORT = [110, 71];           // the printed comfort zone lines
+  const LO_STOP = -232;                // pointer at the LO end stop, SVG degrees
+  const POINTER_OFF = -212;            // pointer at OFF, SVG degrees
+  const FLAT_OFF = -191;               // the shaft's flat at OFF, SVG degrees
+
   const scale = svg.querySelector('.dv-scale');
-  for (let t = 0; t <= 180; t += 10) {
-    const major = t % 30 === 0;
-    const [x0, y0] = pt(40, t - 90);
-    const [x1, y1] = pt(major ? 44 : 42.5, t - 90);
-    el('line', { x1: f(x0), y1: f(y0), x2: f(x1), y2: f(y1), class: major ? 'major' : '' }, scale);
-    if (major) {
-      const [tx, ty] = pt(47.2, t - 90);
-      el('text', { x: f(tx), y: f(ty + 0.95), 'text-anchor': 'middle' }, scale).textContent = t;
-    }
-  }
-  el('path', { d: arcPath(50.5, ON_FROM - 90, 90), class: 'zone' }, scale);
-  const [onX, onY] = pt(54, 150 - 90);
-  el('text', { x: f(onX), y: f(onY + 1), 'text-anchor': 'middle', class: 'zone-text' }, scale).textContent = 'ON';
-  el('text', { x: '0', y: '-51.5', 'text-anchor': 'middle' }, scale).textContent = 'OFF';
+  const tick = (r0, r1, deg, cls) => {
+    const [x0, y0] = pt(r0, deg);
+    const [x1, y1] = pt(r1, deg);
+    el('line', { x1: f(x0), y1: f(y0), x2: f(x1), y2: f(y1), class: cls }, scale);
+  };
+  const label = (r, deg, text, cls) => {
+    const [x, y] = pt(r, deg);
+    el('text', { x: f(x), y: f(y + 1), 'text-anchor': 'middle', class: cls }, scale).textContent = text;
+  };
+  // The printed marks and comfort zone lines on the thermostat's face.
+  for (const [text, a] of MARKS) { tick(49, 53, -a, 'mark'); label(57, -a, text, 'mark-text'); }
+  for (const a of COMFORT) tick(49, 51.2, -a, '');
+  // Ember's travel, from OFF clockwise to 180, with ON from 120.
+  el('path', { d: arcPath(46, POINTER_OFF, POINTER_OFF + 180), class: 'track' }, scale);
+  el('path', { d: arcPath(46, POINTER_OFF + ON_FROM, POINTER_OFF + 180), class: 'zone' }, scale);
+  for (let t = 0; t <= 180; t += 30) tick(44.6, 47.4, POINTER_OFF + t, 'major');
+  label(41, POINTER_OFF + 8, 'OFF', '');      // beside the pointer, not under it
+  label(41, POINTER_OFF + 150, 'ON', 'zone-text');
+  tick(43.5, 48.5, LO_STOP, 'stop');
+  label(41, LO_STOP - 4, 'STOP', 'stop-text');
 
   // The sector: a solid slice, the cord on its rim, a sled near each end.
   const [s0x, s0y] = pt(SECTOR_R, SLICE[0]);
@@ -236,8 +255,10 @@
   for (const a of [SLICE[0] + 13, SLICE[1] - 13]) {
     el('rect', { x: -2.6, y: -4, width: 5.2, height: 8, rx: 0.6, transform: `rotate(${a}) translate(27 0)` }, sleds);
   }
-  el('text', { x: '-42', y: '-10.5', 'text-anchor': 'middle', class: 'dv-label' }, svg).textContent = 'CAPSTAN';
-  el('text', { x: '-27', y: '47', 'text-anchor': 'middle', class: 'dv-label' }, svg).textContent = 'SECTOR';
+  // The D hole turns with the sector; its flat faces where the shaft's does.
+  svg.querySelector('.dv-dhole').setAttribute('transform', `rotate(${FLAT_OFF + 90})`);
+  el('text', { x: '-47', y: '13.5', 'text-anchor': 'middle', class: 'dv-label' }, svg).textContent = 'CAPSTAN';
+  el('text', { x: '0', y: '62', 'text-anchor': 'middle', class: 'dv-label' }, svg).textContent = 'SECTOR AND DIAL POINTER';
 
   const sector = svg.querySelector('.dv-sector');
   const needle = svg.querySelector('.dv-needle');
@@ -250,7 +271,8 @@
   function setTravel(t) {
     travel = Math.min(180, Math.max(0, t));
     sector.setAttribute('transform', `rotate(${f(travel)})`);
-    needle.setAttribute('transform', `rotate(${f(travel)})`);
+    // The needle is drawn pointing up (-90); turn it to the pointer's direction.
+    needle.setAttribute('transform', `rotate(${f(POINTER_OFF + 90 + travel)})`);
     capstanTurn.setAttribute('transform', `rotate(${f(travel * RATIO)})`);
     const steps = Math.round(travel / 180 * STEPS_FULL);
     outs.travel.textContent = `${String(Math.round(travel)).padStart(3, '0')}°`;

@@ -1030,6 +1030,11 @@ body::after {
 .dv-scale text { fill: var(--beige-dim); font: 2.7px var(--mono); }
 .dv-scale .zone { fill: none; stroke: var(--amber); stroke-width: 1.1; opacity: .55; }
 .dv-scale .zone-text { fill: var(--amber); }
+.dv-scale .track { fill: none; stroke: var(--beige-dim); stroke-width: .35; }
+.dv-scale line.mark { stroke: var(--beige); stroke-width: .5; }
+.dv-scale .mark-text { fill: var(--beige); font: 3.4px var(--wide); }
+.dv-scale line.stop { stroke: #e2712b; stroke-width: .6; }
+.dv-scale .stop-text { fill: #e2712b; font-size: 2.3px; }
 .dv-label { fill: var(--beige-dim); font: 2.5px var(--mono); letter-spacing: .4px; }
 
 .thermo {
