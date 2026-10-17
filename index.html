@@ -21,15 +21,16 @@
 <nav class="index" aria-label="Sections">
   <a class="index__home" href="#top">EMBER</a>
   <ol>
-    <li><a href="#unit"><b>01</b><span>Unit</span></a></li>
-    <li><a href="#features"><b>02</b><span>Features</span></a></li>
-    <li><a href="#inside"><b>03</b><span>Inside</span></a></li>
-    <li><a href="#drive"><b>04</b><span>Drive</span></a></li>
-    <li><a href="#power"><b>05</b><span>Power</span></a></li>
-    <li><a href="#circuit"><b>06</b><span>Circuit</span></a></li>
-    <li><a href="#history"><b>07</b><span>History</span></a></li>
-    <li><a href="#spec"><b>08</b><span>Spec</span></a></li>
-    <li><a href="#status"><b>09</b><span>Status</span></a></li>
+    <li><a href="#how"><b>01</b><span>How it works</span></a></li>
+    <li><a href="#unit"><b>02</b><span>Unit</span></a></li>
+    <li><a href="#features"><b>03</b><span>Features</span></a></li>
+    <li><a href="#inside"><b>04</b><span>Inside</span></a></li>
+    <li><a href="#drive"><b>05</b><span>Drive</span></a></li>
+    <li><a href="#power"><b>06</b><span>Power</span></a></li>
+    <li><a href="#circuit"><b>07</b><span>Circuit</span></a></li>
+    <li><a href="#history"><b>08</b><span>History</span></a></li>
+    <li><a href="#spec"><b>09</b><span>Spec</span></a></li>
+    <li><a href="#status"><b>10</b><span>Status</span></a></li>
   </ol>
 </nav>
 <main>
@@ -110,11 +111,88 @@
           </g></symbol>
   </svg>
 
-  <!-- ============ 01 THE UNIT ============ -->
-  <section class="section spread" id="unit" aria-labelledby="unit-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 01 / 09</span></div>
+  <!-- ============ 01 HOW IT WORKS ============ -->
+  <section class="section spread" id="how" aria-labelledby="how-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 01 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">01 · Introducing Model 01</p>
+      <p class="crt">01 · How it works</p>
+      <div class="lock">
+        <h2 class="fit" id="how-title"><span>Your thermostat stays.</span><span>Model 01 turns its dial.</span></h2>
+        <p class="lock__tags"><span>Command</span><span aria-hidden="true">·</span><span>Motor</span><span aria-hidden="true">·</span><span>Cord</span><span aria-hidden="true">·</span><span>Dial</span></p>
+      </div>
+      <p class="spread__intro">Model 01 does not replace your thermostat. It takes the place of the snap-on cover and turns the dial shaft the way your hand turns the knob, so the thermostat still switches the heating itself. Press Move to ON and watch the drive turn the dial.</p>
+    </header>
+
+    <div class="drive reveal">
+      <div class="gbox gbox--flat drive__model">
+        <span class="gbox__tab">Interactive drive model · to scale</span>
+        <div class="gbox__in"><div class="gbox__face">
+          <svg class="drivesvg" viewBox="-66 -66 132 132" role="img" aria-labelledby="drive-svg-title">
+            <title id="drive-svg-title">Capstan and sector, front view, to scale</title>
+            <g class="dv-scale" aria-hidden="true"></g>
+            <g class="dv-sector">
+              <path class="dv-slice" d=""/>
+              <path class="dv-cord" d=""/>
+              <g class="dv-sleds"></g>
+              <circle class="dv-hub" r="8"/>
+              <path class="dv-dhole" d="M -2.5 -1.5 A 3 3 0 1 1 2.5 -1.5 Z"/>
+            </g>
+            <g class="dv-capstan" transform="translate(-42 0)">
+              <g class="dv-capstan-turn">
+                <circle class="dv-lip" r="7.2"/>
+                <circle class="dv-wrap" r="5.66"/>
+                <line class="dv-notch" x1="0" y1="0" x2="0" y2="-7.2"/>
+                <circle class="dv-shaft" r="2.5"/>
+              </g>
+            </g>
+            <g class="dv-needle">
+              <line x1="0" y1="0" x2="0" y2="-45"/>
+              <circle r="3"/>
+            </g>
+          </svg>
+          <p class="drawing-note">Face marks, end stop and pointer as measured on the real thermostat. Shapes simplified; sizes from the v6 drive.</p>
+        </div></div>
+      </div>
+
+      <div class="drive__controls">
+        <div class="gbox drive__read">
+          <span class="gbox__tab">Drive readout · simulated</span>
+          <div class="gbox__in"><div class="gbox__face">
+            <dl class="readouts" aria-live="polite">
+              <div class="readout-cell"><dt>Dial travel</dt><dd data-out="travel">000°</dd></div>
+              <div class="readout-cell"><dt>Motor shaft turns</dt><dd data-out="turns">0.00</dd></div>
+              <div class="readout-cell"><dt>Motor half steps</dt><dd data-out="steps">0</dd></div>
+              <div class="readout-cell"><dt>Motor time, s</dt><dd data-out="time">0.0</dd></div>
+            </dl>
+            <p class="thermo" data-out="state"><i class="led"></i><span>Thermostat off</span></p>
+          </div></div>
+        </div>
+        <label class="slider">
+          <span class="label">Dial travel from OFF</span>
+          <input type="range" min="0" max="180" step="1" value="0" data-in="travel">
+        </label>
+        <div class="buttons">
+          <button class="key" type="button" data-move="0">Move to OFF</button>
+          <button class="key key--on" type="button" data-move="180">Move to ON</button>
+        </div>
+        <p class="fine">The orange pointer shows where your knob's pointer would point: OFF just short of LO, ON from straight up. The keys run a move 10 times faster than the motor does. A full move is 3.15 turns of the motor shaft: about 12,840 half steps (4,076 per turn, through the motor's 63.68 : 1 gearbox) at 2.0 ms each, 25.7 s. The thermostat switches on 140° past its LO stop, 120° of travel from OFF. OFF sits 20° short of the LO stop, so the drive never presses the dial against it.</p>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">Step 01</span><div class="gbox__in"><div class="gbox__face"><h3>Fit</h3><p>The thermostat's snap-on cover comes off. Model 01 snaps onto the metal plate in its place, two side screws take up the play, and a sector pushes onto the dial shaft where the knob was.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">Step 02</span><div class="gbox__in"><div class="gbox__face"><h3>Command</h3><p>Your Raspberry Pi sends ON or OFF over Bluetooth Low Energy. The XIAO nRF52840 inside receives it and switches on the angle sensor.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">Step 03</span><div class="gbox__in"><div class="gbox__face"><h3>Drive</h3><p>The stepper motor turns the capstan. The cord turns the sector, and the dial shaft with it, 6.30 times slower: 3.15 motor turns move the dial 180°, in 25.7 s.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">Step 04</span><div class="gbox__in"><div class="gbox__face"><h3>Confirm</h3><p>The AS5600 reads the shaft's angle, and the motor stops at OFF or ON. If the dial does not move, the motor stops and the unit reports it.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">Step 05</span><div class="gbox__in"><div class="gbox__face"><h3>Thermostat</h3><p>At ON, the thermostat's own mechanism switches the heating, as it does when the knob is turned by hand. Model 01 then switches off everything except the radio.</p></div></div></li>
+    </ol>
+  </section>
+
+  <!-- ============ 02 THE UNIT ============ -->
+  <section class="section spread" id="unit" aria-labelledby="unit-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 02 / 10</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">02 · Introducing Model 01</p>
       <div class="lock">
         <h2 class="fit" id="unit-title"><span>No buttons. No screen.</span><span>No lights. By design.</span></h2>
         <p class="lock__tags"><span>Faceted enclosure</span><span aria-hidden="true">·</span><span>Model 01</span></p>
@@ -157,11 +235,11 @@
     </ol>
   </section>
 
-  <!-- ============ 02 WHAT IT DOES ============ -->
+  <!-- ============ 03 WHAT IT DOES ============ -->
   <section class="section spread" id="features" aria-labelledby="features-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 02 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 03 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">02 · Features</p>
+      <p class="crt">03 · Features</p>
       <div class="lock">
         <h2 class="fit" id="features-title"><span>No more walking</span><span>to the dial.</span></h2>
         <p class="lock__tags"><span>Command link</span><span aria-hidden="true">·</span><span>Angle sensing</span><span aria-hidden="true">·</span><span>3 × AA</span></p>
@@ -176,17 +254,17 @@
       <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-04</span><div class="gbox__in"><div class="gbox__face"><h3>3-cell power</h3><p>Three AA cells. About 2.4 years per set at 4 moves a day, October to April (calculated). Change them with the unit on the wall.</p></div></div></li>
       <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-05</span><div class="gbox__in"><div class="gbox__face"><h3>One-piece removal</h3><p>Loosen two side screws and the whole unit pulls straight off: case, motor, drive and sensor together. Push the original knob back on and the thermostat works by hand.</p></div></div></li>
       <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-06</span><div class="gbox__in"><div class="gbox__face"><h3>Mains-clear enclosure</h3><p>No screw, contact, magnet or wire near the plate's openings to the mains-voltage parts. Solid plastic closes them off. The USB port faces down, out of sight.</p></div></div></li>
-      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-07</span><div class="gbox__in"><div class="gbox__face"><h3>Fail-safe hold</h3><p>If the cells run flat, the motor's 64 : 1 gearbox holds the dial where it is, and the thermostat keeps regulating at that setting. No failure can leave the heater running without control.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-07</span><div class="gbox__in"><div class="gbox__face"><h3>Fail-safe hold</h3><p>If the cells run flat, the gearbox inside the motor holds the dial where it is, and the thermostat keeps regulating at that setting. No failure can leave the heater running without control.</p></div></div></li>
       <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-08</span><div class="gbox__in"><div class="gbox__face"><h3>Early battery warning</h3><p>The unit reports its battery voltage after every move. The Pi turns those readings into a percentage and warns before a move would fail: about two months ahead, in simulation.</p></div></div></li>
       <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-09</span><div class="gbox__in"><div class="gbox__face"><h3>Field-serviceable</h3><p>Motor replacement: two screws and one plug. M3 screws throughout.</p></div></div></li>
     </ul>
   </section>
 
-  <!-- ============ 03 INSIDE ============ -->
+  <!-- ============ 04 INSIDE ============ -->
   <section class="section spread" id="inside" aria-labelledby="inside-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 03 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 04 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">03 · Inside Model 01 · cover off</p>
+      <p class="crt">04 · Inside Model 01 · cover off</p>
       <div class="lock">
         <h2 class="fit" id="inside-title"><span>Every part placed.</span><span>Every wire routed.</span></h2>
         <p class="lock__tags"><span>Cover off</span><span aria-hidden="true">·</span><span>Front view</span><span aria-hidden="true">·</span><span>From CAD</span></p>
@@ -217,16 +295,16 @@
     </div>
   </section>
 
-  <!-- ============ 04 CORD DRIVE ============ -->
+  <!-- ============ 05 CORD DRIVE ============ -->
   <section class="section spread" id="drive" aria-labelledby="drive-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 04 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 05 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">04 · Capstan drive · 6.30 : 1</p>
+      <p class="crt">05 · Capstan drive · 6.30 : 1</p>
       <div class="lock">
-        <h2 class="fit" id="drive-title"><span>Capstan drive.</span><span>403 : 1 total reduction.</span></h2>
+        <h2 class="fit" id="drive-title"><span>Capstan drive.</span><span>6.30 : 1 reduction.</span></h2>
         <p class="lock__tags"><span>0.50 <span class="unit">mm</span> braided cord</span><span aria-hidden="true">·</span><span>180° travel</span></p>
       </div>
-      <p class="spread__intro">A grooved capstan on the motor shaft winds a 0.50 mm braided cord. The cord's ends are anchored to a sector on the dial shaft: 5.66 mm radius at the capstan, 35.66 mm at the sector. Result: a 6.30 : 1 cord drive behind the motor's own 64 : 1 gearbox, about 403 : 1 in all, over 180° of travel.</p>
+      <p class="spread__intro">A grooved capstan on the motor shaft winds a 0.50 mm braided cord. The cord's ends are anchored to a sector on the dial shaft. The cord's centre runs at 5.66 mm from the motor shaft and 35.66 mm from the dial shaft. Result: the dial turns 6.30 times slower than the motor shaft, with 6.30 times its torque, less friction, over 180° of travel. The interactive model is in section 01.</p>
     </header>
 
     <div class="readout readout--wide reveal" data-readout>
@@ -240,7 +318,7 @@
       </figure>
       <ol class="readout__col readout__col--r">
         <li data-x="49.9" data-y="10.6"><b>Capstan</b><span>grooved for the 0.50 mm cord, with spare turns</span></li>
-        <li data-x="49.9" data-y="24.7"><b>Cord face</b><span>35.66 mm radius, between two lips</span></li>
+        <li data-x="49.9" data-y="24.7"><b>Cord face</b><span>35.41 mm radius between two lips; cord centre at 35.66</span></li>
         <li data-x="94.9" data-y="69.8"><b>Sector</b><span>180° of travel</span></li>
         <li data-x="49.9" data-y="70.2"><b>Push-fit hub</b><span>D hole for the dial shaft</span></li>
       </ol>
@@ -248,62 +326,6 @@
     <div class="titleplate reveal">
       <p class="titleplate__name">Capstan drive v6</p>
       <p class="titleplate__sub">Sent to the printer 2026-10-16 · fitting next</p>
-    </div>
-
-    <div class="drive reveal">
-      <div class="gbox gbox--flat drive__model">
-        <span class="gbox__tab">Interactive drive model · to scale</span>
-        <div class="gbox__in"><div class="gbox__face">
-          <svg class="drivesvg" viewBox="-66 -66 132 132" role="img" aria-labelledby="drive-svg-title">
-            <title id="drive-svg-title">Capstan and sector, front view, to scale</title>
-            <g class="dv-scale" aria-hidden="true"></g>
-            <g class="dv-sector">
-              <path class="dv-slice" d=""/>
-              <path class="dv-cord" d=""/>
-              <g class="dv-sleds"></g>
-              <circle class="dv-hub" r="8"/>
-              <path class="dv-dhole" d="M -2.5 -1.5 A 3 3 0 1 1 2.5 -1.5 Z"/>
-            </g>
-            <g class="dv-capstan" transform="translate(-42 0)">
-              <g class="dv-capstan-turn">
-                <circle class="dv-lip" r="7.2"/>
-                <circle class="dv-wrap" r="5.66"/>
-                <line class="dv-notch" x1="0" y1="0" x2="0" y2="-7.2"/>
-                <circle class="dv-shaft" r="2.5"/>
-              </g>
-            </g>
-            <g class="dv-needle">
-              <line x1="0" y1="0" x2="0" y2="-45"/>
-              <circle r="3"/>
-            </g>
-          </svg>
-          <p class="drawing-note">Face marks, end stop and pointer as measured on the real thermostat. Shapes simplified; sizes from the v6 drive.</p>
-        </div></div>
-      </div>
-
-      <div class="drive__controls">
-        <div class="gbox drive__read">
-          <span class="gbox__tab">Drive readout · simulated</span>
-          <div class="gbox__in"><div class="gbox__face">
-            <dl class="readouts" aria-live="polite">
-              <div class="readout-cell"><dt>Dial travel</dt><dd data-out="travel">000°</dd></div>
-              <div class="readout-cell"><dt>Capstan turns</dt><dd data-out="turns">0.00</dd></div>
-              <div class="readout-cell"><dt>Half steps</dt><dd data-out="steps">0</dd></div>
-              <div class="readout-cell"><dt>Motor time, s</dt><dd data-out="time">0.0</dd></div>
-            </dl>
-            <p class="thermo" data-out="state"><i class="led"></i><span>Thermostat off</span></p>
-          </div></div>
-        </div>
-        <label class="slider">
-          <span class="label">Dial travel from OFF</span>
-          <input type="range" min="0" max="180" step="1" value="0" data-in="travel">
-        </label>
-        <div class="buttons">
-          <button class="key" type="button" data-move="0">Move to OFF</button>
-          <button class="key key--on" type="button" data-move="180">Move to ON</button>
-        </div>
-        <p class="fine">The keys run a move 10 times faster than the motor does. A full move: 12,902 half steps at 2.0 ms, 25.8 s. The thermostat switches on 140° past its LO stop, 120° of travel from OFF. OFF sits 20° short of the LO stop, so the drive never presses the dial against it.</p>
-      </div>
     </div>
 
     <div class="gbox gbox--flat drivelog reveal">
@@ -321,11 +343,11 @@
     </div>
   </section>
 
-  <!-- ============ 05 POWER ============ -->
+  <!-- ============ 06 POWER ============ -->
   <section class="section spread" id="power" aria-labelledby="power-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 05 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 06 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">05 · Power system</p>
+      <p class="crt">06 · Power system</p>
       <div class="lock">
         <h2 class="fit" id="power-title"><span>Three AA cells.</span><span>No charger. No regulator.</span></h2>
         <p class="lock__tags"><span>0.75 <span class="unit">mAh</span> per move</span><span aria-hidden="true">·</span><span>20 <span class="unit">µA</span> standby</span></p>
@@ -392,11 +414,11 @@
     </div>
   </section>
 
-  <!-- ============ 06 CIRCUIT ============ -->
+  <!-- ============ 07 CIRCUIT ============ -->
   <section class="section spread" id="circuit" aria-labelledby="circuit-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 06 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 07 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">06 · Circuit</p>
+      <p class="crt">07 · Circuit</p>
       <div class="lock">
         <h2 class="fit" id="circuit-title"><span>Three modules.</span><span>Fifteen wires.</span></h2>
         <p class="lock__tags"><span>XIAO nRF52840</span><span aria-hidden="true">·</span><span>ULN2003</span><span aria-hidden="true">·</span><span>AS5600</span></p>
@@ -451,11 +473,11 @@
     </div>
   </section>
 
-  <!-- ============ 07 DESIGN HISTORY ============ -->
+  <!-- ============ 08 DESIGN HISTORY ============ -->
   <section class="section spread" id="history" aria-labelledby="history-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 07 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 08 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">07 · Design history</p>
+      <p class="crt">08 · Design history</p>
       <div class="lock">
         <h2 class="fit" id="history-title"><span>Thirteen versions</span><span>in one day.</span></h2>
         <p class="lock__tags"><span>v1 to v6.6</span><span aria-hidden="true">·</span><span>15 October 2026</span></p>
@@ -477,11 +499,11 @@
     </ol>
   </section>
 
-  <!-- ============ 08 SPECIFICATIONS ============ -->
+  <!-- ============ 09 SPECIFICATIONS ============ -->
   <section class="section spread" id="spec" aria-labelledby="spec-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 08 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 09 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">08 · Technical data</p>
+      <p class="crt">09 · Technical data</p>
       <div class="lock">
         <h2 class="fit" id="spec-title"><span>Technical data.</span><span>Model 01.</span></h2>
         <p class="lock__tags"><span>Design</span><span aria-hidden="true">·</span><span>Calculated</span><span aria-hidden="true">·</span><span>Datasheet</span><span aria-hidden="true">·</span><span>Estimate</span></p>
@@ -499,7 +521,7 @@
           <div><dt>Motor:</dt><dd>28BYJ-48 stepper, ULN2003 driver board</dd><em>datasheet</em></div>
           <div><dt>Drive:</dt><dd>capstan and sector, 0.50 mm braided cord (85 lb), ratio 6.30 : 1</dd><em>design</em></div>
           <div><dt>Dial travel:</dt><dd>180° from OFF; OFF is 20° short of the LO stop</dd><em>design</em></div>
-          <div><dt>One move:</dt><dd>12,902 half steps, 25.8 s at 2.0 ms per half step</dd><em>calculated</em></div>
+          <div><dt>One move:</dt><dd>3.15 motor shaft turns: about 12,840 half steps, 25.7 s at 2.0 ms per half step</dd><em>calculated</em></div>
           <div><dt>Controller:</dt><dd>Seeed XIAO nRF52840</dd><em>datasheet</em></div>
           <div><dt>Radio:</dt><dd>Bluetooth Low Energy, commands from a Raspberry Pi</dd><em>design</em></div>
           <div><dt>Angle sensor:</dt><dd>AS5600 magnetic, 12-bit: 0.088° per count</dd><em>datasheet</em></div>
@@ -515,11 +537,11 @@
     </div>
   </section>
 
-  <!-- ============ 09 STATUS ============ -->
+  <!-- ============ 10 STATUS ============ -->
   <section class="section spread" id="status" aria-labelledby="status-title">
-    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 09 / 09</span></div>
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 10 / 10</span></div>
     <header class="spread__head reveal">
-      <p class="crt">09 · Development status</p>
+      <p class="crt">10 · Development status</p>
       <div class="lock">
         <h2 class="fit" id="status-title"><span>Development status.</span><span>17 October 2026.</span></h2>
         <p class="lock__tags"><span>Done</span><span aria-hidden="true">·</span><span>In progress</span><span aria-hidden="true">·</span><span>Not yet</span></p>

@@ -182,11 +182,16 @@
 
   // ---------- Cord drive model ----------
   // Sizes in mm from capstan_drive_v6.py and PLAN.md: shaft spacing 42, cord
-  // radius 5.66 on the capstan and 35.66 on the sector (ratio 6.30), 180
-  // degrees of travel = 12,902 half steps at 2.0 ms. Angles are SVG degrees,
-  // clockwise from the right; the dial and the capstan both turn clockwise.
+  // radius 5.66 on the capstan and 35.66 on the sector (ratio 6.30). 180
+  // degrees of travel is 3.15 turns of the motor shaft. The 28BYJ-48's output
+  // shaft takes about 4076 half steps a turn (64 half steps of the motor
+  // inside, through its 63.68 : 1 gearbox; motor_test.ino), so a full move is
+  // about 12,840 half steps, 25.7 s at 2.0 ms each (motor_buttons.ino's
+  // starting speed). Angles are SVG degrees, clockwise from the right; the
+  // dial and the capstan both turn clockwise.
   const RATIO = 6.30;
-  const STEPS_FULL = 12902;
+  const HALF_STEPS_PER_TURN = 4076;
+  const STEPS_FULL = Math.round((180 / 360) * RATIO * HALF_STEPS_PER_TURN);   // 12,839
   const STEP_MS = 2.0;
   const ON_FROM = 120;              // degrees of travel from OFF
   const PLAY_SPEED = 10;            // the buttons play moves 10 times faster
@@ -306,6 +311,16 @@
   slider.addEventListener('input', () => { cancelAnimationFrame(playing); setTravel(Number(slider.value)); });
   document.querySelectorAll('[data-move]').forEach((b) => b.addEventListener('click', () => moveTo(Number(b.dataset.move))));
   setTravel(0);
+
+  // Play one move, OFF to ON, the first time the model is mostly in view, so
+  // a visitor sees the drive turn the dial without pressing anything.
+  if (!reduceMotion) {
+    new IntersectionObserver(([entry], watch) => {
+      if (!entry.isIntersecting) return;
+      watch.disconnect();
+      setTimeout(() => { if (travel === 0) moveTo(180); }, 700);
+    }, { threshold: 0.6 }).observe(svg);
+  }
 
   // ---------- Battery life chart ----------
   // From hardware/battery/README.md, "Battery life" (alkaline cells, to the
