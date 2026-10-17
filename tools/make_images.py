@@ -65,6 +65,9 @@ DRAWINGS = {
     'v6.2': 'wall_case/v6.2/preview_from_below.svg.png',
     'v6.5': 'wall_case/v6.5/preview_three_quarter.svg.png',
     'v6.6': 'wall_case/v6.6/preview_front.svg.png',
+    'bay': 'wall_case/v6.6/preview_battery_bay.svg.png',
+    'bay-end': 'wall_case/v6.6/preview_bay_top_end.svg.png',
+    'side-v6.5': 'wall_case/v6.5/preview_side.svg.png',
 }
 # The inside drawing keeps a fixed crop, because the page places numbered
 # markers on it in this crop's coordinates (see index.html, #inside).

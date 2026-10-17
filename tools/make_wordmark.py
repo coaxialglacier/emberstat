@@ -97,17 +97,17 @@ def main():
     baseline = h + SUB_CAP * SUB_SIZE / 2
 
     svg = f'''<svg class="wordmark" viewBox="0 0 {fmt(x1)} {fmt(y1)}" role="img" aria-labelledby="wm-title">
-            <title id="wm-title">EMBER, Environmental Control Unit</title>
-            <path class="wm-frame" pathLength="1" d="{frame_d}"/>
-            <text class="wm-sub" x="{fmt(sub_left)}" y="{fmt(baseline)}" textLength="{fmt(SUB_WIDTH)}" lengthAdjust="spacing" font-size="{fmt(SUB_SIZE)}">{SUBTITLE}</text>
-            <g class="wm-letters">
-              {(chr(10) + '              ').join(letter_paths)}
-            </g>
-          </svg>'''
+          <title id="wm-title">EMBER, Environmental Control Unit</title>
+          <path class="wm-frame" pathLength="1" d="{frame_d}"/>
+          <text class="wm-sub" x="{fmt(sub_left)}" y="{fmt(baseline)}" textLength="{fmt(SUB_WIDTH)}" lengthAdjust="spacing" font-size="{fmt(SUB_SIZE)}">{SUBTITLE}</text>
+          <g class="wm-letters">
+            {(chr(10) + '            ').join(letter_paths)}
+          </g>
+        </svg>'''
 
     html = INDEX.read_text()
     new, n = re.subn(r'(<!-- wordmark:start -->).*?(<!-- wordmark:end -->)',
-                     lambda m: f'{m.group(1)}\n          {svg}\n          {m.group(2)}', html, flags=re.S)
+                     lambda m: f'{m.group(1)}\n        {svg}\n        {m.group(2)}', html, flags=re.S)
     assert n == 1, 'wordmark markers not found in index.html'
     INDEX.write_text(new)
     print(f'wordmark {fmt(x1)} x {fmt(y1)} mm written to {INDEX.name}')

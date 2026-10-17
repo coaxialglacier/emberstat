@@ -4,8 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ember · Environmental Control Unit</title>
-  <meta name="description" content="Ember fits over a dial thermostat and turns the dial on command.">
+  <meta name="description" content="Ember: automated control for manual dial thermostats. No rewiring, no new thermostat.">
   <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Mono:wght@400;700&display=swap">
@@ -58,25 +61,28 @@
       </div>
       <div class="stage__shade" aria-hidden="true"></div>
 
-      <div class="fore">
-        <div class="mark">
-          <!-- wordmark:start -->
-          <svg class="wordmark" viewBox="0 0 63.686 19" role="img" aria-labelledby="wm-title">
-            <title id="wm-title">EMBER, Environmental Control Unit</title>
-            <path class="wm-frame" pathLength="1" d="M59.886 0.4 L61.52 0.4 L63.286 2.166 L63.286 16.834 L61.52 18.6 L2.166 18.6 L0.4 16.834 L0.4 2.166 L2.166 0.4 L21.486 0.4"/>
-            <text class="wm-sub" x="22.686" y="0.963" textLength="36" lengthAdjust="spacing" font-size="1.5">ENVIRONMENTAL CONTROL UNIT</text>
-            <g class="wm-letters">
-              <path class="wm-letter" style="--i:0" d="M3.349 3.019 L3.3 3.175 L3.3 5.342 L3.378 5.611 L11.872 5.611 L12.05 5.576 L12.05 3.204 L11.989 3.008 L3.619 3.008 Z M3.301 15.967 L11.993 15.967 L11.993 13.334 L7.01 13.334 L6.668 13.133 L6.554 12.986 L6.476 12.225 L6.557 11.112 L6.747 10.884 L7.01 10.774 L11.14 10.774 L11.868 10.711 L11.868 8.564 L11.825 8.139 L3.301 8.139 Z"/>
-              <path class="wm-letter" style="--i:1" d="M13.632 15.956 L16.543 15.956 L16.677 15.915 L16.677 6.497 L16.725 5.998 L16.873 5.705 L17.188 5.551 L22.322 5.551 L23.584 5.711 L24.173 5.998 L24.507 6.35 L24.722 6.937 L24.895 7.671 L24.905 8.404 L24.915 15.981 L26.312 15.989 L28.174 15.996 L28.185 11.748 L28.16 9.079 L28.122 6.79 L27.998 6.233 L27.733 5.294 L27.394 4.678 L26.899 4.148 L26.459 3.792 L25.99 3.551 L24.64 3.059 L22.792 3.034 L13.632 3.009 Z M19.255 8.052 L19.255 15.885 L19.359 15.957 L22.264 15.957 L22.358 15.856 L22.358 14.77 L22.358 8.052 L21.706 7.982 L19.92 7.982 Z"/>
-              <path class="wm-letter" style="--i:2" d="M29.788 3.049 L29.742 3.489 L29.742 5.637 L34.889 5.637 L35.417 5.904 L35.783 6.366 L35.862 6.601 L35.865 7.188 L35.771 7.51 L35.564 7.771 L35.212 8.04 L34.86 8.181 L29.76 8.181 L29.76 10.815 L34.801 10.815 L35.417 11.137 L35.703 11.443 L35.829 11.707 L35.865 12.207 L35.754 12.676 L35.535 12.995 L35.27 13.206 L34.86 13.375 L29.811 13.375 L29.734 13.703 L29.734 15.963 L29.87 16 L36.004 16 L37.09 15.771 L37.765 15.489 L38.352 15.027 L38.76 14.525 L39.126 13.762 L39.223 13.204 L39.223 12.089 L39.158 11.649 L38.952 11.12 L38.487 10.445 L37.714 9.858 L37.553 9.477 L37.656 9.095 L38.323 8.569 L38.73 8.127 L39.158 7.1 L39.209 6.571 L39.209 5.427 L38.877 4.605 L38.594 4.164 L38.147 3.722 L37.818 3.519 L37.208 3.241 L36.063 3.01 L29.869 3.01 Z"/>
-              <path class="wm-letter" style="--i:3" d="M40.848 3.019 L40.799 3.175 L40.799 5.342 L40.877 5.611 L49.371 5.611 L49.549 5.576 L49.549 3.204 L49.488 3.008 L41.117 3.008 Z M40.8 15.967 L49.492 15.967 L49.492 13.334 L44.509 13.334 L44.166 13.133 L44.053 12.986 L43.974 12.225 L44.055 11.112 L44.245 10.884 L44.509 10.774 L48.639 10.774 L49.367 10.711 L49.367 8.564 L49.324 8.139 L40.8 8.139 Z"/>
-              <path class="wm-letter" style="--i:4" d="M51.124 5.61 L55.14 5.61 L56.048 5.688 L56.637 5.917 L56.919 6.181 L57.074 6.591 L57.109 7.059 L57.067 7.41 L56.897 7.729 L56.633 7.939 L56.165 8.114 L55.374 8.171 L51.125 8.171 L51.125 10.804 L54.935 10.804 L55.257 10.87 L55.788 11.099 L56.296 11.597 L56.728 12.505 L56.728 15.985 L59.649 15.985 L60.013 15.96 L60.013 12.534 L59.858 11.685 L59.415 10.893 L59.005 10.522 L58.273 10.185 L58.097 9.99 L58.06 9.811 L58.097 9.633 L58.273 9.437 L58.976 9.084 L59.62 8.582 L59.89 8.289 L60.264 7.511 L60.386 6.62 L60.386 5.507 L60.127 4.687 L59.879 4.277 L59.415 3.749 L58.8 3.388 L58.273 3.211 L57.277 3.024 L51.124 3.024 Z"/>
-            </g>
-          </svg>
-          <!-- wordmark:end -->
-          <p class="lede">Fits over a dial thermostat and turns the dial on command.</p>
+      <div class="mark">
+        <!-- wordmark:start -->
+        <svg class="wordmark" viewBox="0 0 63.686 19" role="img" aria-labelledby="wm-title">
+          <title id="wm-title">EMBER, Environmental Control Unit</title>
+          <path class="wm-frame" pathLength="1" d="M59.886 0.4 L61.52 0.4 L63.286 2.166 L63.286 16.834 L61.52 18.6 L2.166 18.6 L0.4 16.834 L0.4 2.166 L2.166 0.4 L21.486 0.4"/>
+          <text class="wm-sub" x="22.686" y="0.963" textLength="36" lengthAdjust="spacing" font-size="1.5">ENVIRONMENTAL CONTROL UNIT</text>
+          <g class="wm-letters">
+            <path class="wm-letter" style="--i:0" d="M3.349 3.019 L3.3 3.175 L3.3 5.342 L3.378 5.611 L11.872 5.611 L12.05 5.576 L12.05 3.204 L11.989 3.008 L3.619 3.008 Z M3.301 15.967 L11.993 15.967 L11.993 13.334 L7.01 13.334 L6.668 13.133 L6.554 12.986 L6.476 12.225 L6.557 11.112 L6.747 10.884 L7.01 10.774 L11.14 10.774 L11.868 10.711 L11.868 8.564 L11.825 8.139 L3.301 8.139 Z"/>
+            <path class="wm-letter" style="--i:1" d="M13.632 15.956 L16.543 15.956 L16.677 15.915 L16.677 6.497 L16.725 5.998 L16.873 5.705 L17.188 5.551 L22.322 5.551 L23.584 5.711 L24.173 5.998 L24.507 6.35 L24.722 6.937 L24.895 7.671 L24.905 8.404 L24.915 15.981 L26.312 15.989 L28.174 15.996 L28.185 11.748 L28.16 9.079 L28.122 6.79 L27.998 6.233 L27.733 5.294 L27.394 4.678 L26.899 4.148 L26.459 3.792 L25.99 3.551 L24.64 3.059 L22.792 3.034 L13.632 3.009 Z M19.255 8.052 L19.255 15.885 L19.359 15.957 L22.264 15.957 L22.358 15.856 L22.358 14.77 L22.358 8.052 L21.706 7.982 L19.92 7.982 Z"/>
+            <path class="wm-letter" style="--i:2" d="M29.788 3.049 L29.742 3.489 L29.742 5.637 L34.889 5.637 L35.417 5.904 L35.783 6.366 L35.862 6.601 L35.865 7.188 L35.771 7.51 L35.564 7.771 L35.212 8.04 L34.86 8.181 L29.76 8.181 L29.76 10.815 L34.801 10.815 L35.417 11.137 L35.703 11.443 L35.829 11.707 L35.865 12.207 L35.754 12.676 L35.535 12.995 L35.27 13.206 L34.86 13.375 L29.811 13.375 L29.734 13.703 L29.734 15.963 L29.87 16 L36.004 16 L37.09 15.771 L37.765 15.489 L38.352 15.027 L38.76 14.525 L39.126 13.762 L39.223 13.204 L39.223 12.089 L39.158 11.649 L38.952 11.12 L38.487 10.445 L37.714 9.858 L37.553 9.477 L37.656 9.095 L38.323 8.569 L38.73 8.127 L39.158 7.1 L39.209 6.571 L39.209 5.427 L38.877 4.605 L38.594 4.164 L38.147 3.722 L37.818 3.519 L37.208 3.241 L36.063 3.01 L29.869 3.01 Z"/>
+            <path class="wm-letter" style="--i:3" d="M40.848 3.019 L40.799 3.175 L40.799 5.342 L40.877 5.611 L49.371 5.611 L49.549 5.576 L49.549 3.204 L49.488 3.008 L41.117 3.008 Z M40.8 15.967 L49.492 15.967 L49.492 13.334 L44.509 13.334 L44.166 13.133 L44.053 12.986 L43.974 12.225 L44.055 11.112 L44.245 10.884 L44.509 10.774 L48.639 10.774 L49.367 10.711 L49.367 8.564 L49.324 8.139 L40.8 8.139 Z"/>
+            <path class="wm-letter" style="--i:4" d="M51.124 5.61 L55.14 5.61 L56.048 5.688 L56.637 5.917 L56.919 6.181 L57.074 6.591 L57.109 7.059 L57.067 7.41 L56.897 7.729 L56.633 7.939 L56.165 8.114 L55.374 8.171 L51.125 8.171 L51.125 10.804 L54.935 10.804 L55.257 10.87 L55.788 11.099 L56.296 11.597 L56.728 12.505 L56.728 15.985 L59.649 15.985 L60.013 15.96 L60.013 12.534 L59.858 11.685 L59.415 10.893 L59.005 10.522 L58.273 10.185 L58.097 9.99 L58.06 9.811 L58.097 9.633 L58.273 9.437 L58.976 9.084 L59.62 8.582 L59.89 8.289 L60.264 7.511 L60.386 6.62 L60.386 5.507 L60.127 4.687 L59.879 4.277 L59.415 3.749 L58.8 3.388 L58.273 3.211 L57.277 3.024 L51.124 3.024 Z"/>
+          </g>
+        </svg>
+        <!-- wordmark:end -->
+        <div class="lockup">
+          <p class="lockup__line"><span>Automated control for</span> <span>manual dial thermostats.</span></p>
+          <p class="lockup__tags"><span>No rewiring</span><span aria-hidden="true">·</span><span>No new thermostat</span></p>
         </div>
+      </div>
 
+      <div class="fore">
         <div class="spec">
           <span class="dymo" aria-hidden="true">SPECIFICATIONS</span>
           <dl class="spec__list">
@@ -93,206 +99,200 @@
 
   </section>
 
+  <!-- The wordmark once, as a symbol, for the header plate on each spread. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="wm" viewBox="0 0 63.686 19"><path fill="none" stroke="#d6cdbb" stroke-width="0.8" stroke-linejoin="miter" d="M59.886 0.4 L61.52 0.4 L63.286 2.166 L63.286 16.834 L61.52 18.6 L2.166 18.6 L0.4 16.834 L0.4 2.166 L2.166 0.4 L21.486 0.4"/>
+          <text fill="#d6cdbb" font-family="Michroma, sans-serif" x="22.686" y="0.963" textLength="36" lengthAdjust="spacing" font-size="1.5">ENVIRONMENTAL CONTROL UNIT</text>
+          <g fill="#b84d0f">
+            <path d="M3.349 3.019 L3.3 3.175 L3.3 5.342 L3.378 5.611 L11.872 5.611 L12.05 5.576 L12.05 3.204 L11.989 3.008 L3.619 3.008 Z M3.301 15.967 L11.993 15.967 L11.993 13.334 L7.01 13.334 L6.668 13.133 L6.554 12.986 L6.476 12.225 L6.557 11.112 L6.747 10.884 L7.01 10.774 L11.14 10.774 L11.868 10.711 L11.868 8.564 L11.825 8.139 L3.301 8.139 Z"/>
+            <path d="M13.632 15.956 L16.543 15.956 L16.677 15.915 L16.677 6.497 L16.725 5.998 L16.873 5.705 L17.188 5.551 L22.322 5.551 L23.584 5.711 L24.173 5.998 L24.507 6.35 L24.722 6.937 L24.895 7.671 L24.905 8.404 L24.915 15.981 L26.312 15.989 L28.174 15.996 L28.185 11.748 L28.16 9.079 L28.122 6.79 L27.998 6.233 L27.733 5.294 L27.394 4.678 L26.899 4.148 L26.459 3.792 L25.99 3.551 L24.64 3.059 L22.792 3.034 L13.632 3.009 Z M19.255 8.052 L19.255 15.885 L19.359 15.957 L22.264 15.957 L22.358 15.856 L22.358 14.77 L22.358 8.052 L21.706 7.982 L19.92 7.982 Z"/>
+            <path d="M29.788 3.049 L29.742 3.489 L29.742 5.637 L34.889 5.637 L35.417 5.904 L35.783 6.366 L35.862 6.601 L35.865 7.188 L35.771 7.51 L35.564 7.771 L35.212 8.04 L34.86 8.181 L29.76 8.181 L29.76 10.815 L34.801 10.815 L35.417 11.137 L35.703 11.443 L35.829 11.707 L35.865 12.207 L35.754 12.676 L35.535 12.995 L35.27 13.206 L34.86 13.375 L29.811 13.375 L29.734 13.703 L29.734 15.963 L29.87 16 L36.004 16 L37.09 15.771 L37.765 15.489 L38.352 15.027 L38.76 14.525 L39.126 13.762 L39.223 13.204 L39.223 12.089 L39.158 11.649 L38.952 11.12 L38.487 10.445 L37.714 9.858 L37.553 9.477 L37.656 9.095 L38.323 8.569 L38.73 8.127 L39.158 7.1 L39.209 6.571 L39.209 5.427 L38.877 4.605 L38.594 4.164 L38.147 3.722 L37.818 3.519 L37.208 3.241 L36.063 3.01 L29.869 3.01 Z"/>
+            <path d="M40.848 3.019 L40.799 3.175 L40.799 5.342 L40.877 5.611 L49.371 5.611 L49.549 5.576 L49.549 3.204 L49.488 3.008 L41.117 3.008 Z M40.8 15.967 L49.492 15.967 L49.492 13.334 L44.509 13.334 L44.166 13.133 L44.053 12.986 L43.974 12.225 L44.055 11.112 L44.245 10.884 L44.509 10.774 L48.639 10.774 L49.367 10.711 L49.367 8.564 L49.324 8.139 L40.8 8.139 Z"/>
+            <path d="M51.124 5.61 L55.14 5.61 L56.048 5.688 L56.637 5.917 L56.919 6.181 L57.074 6.591 L57.109 7.059 L57.067 7.41 L56.897 7.729 L56.633 7.939 L56.165 8.114 L55.374 8.171 L51.125 8.171 L51.125 10.804 L54.935 10.804 L55.257 10.87 L55.788 11.099 L56.296 11.597 L56.728 12.505 L56.728 15.985 L59.649 15.985 L60.013 15.96 L60.013 12.534 L59.858 11.685 L59.415 10.893 L59.005 10.522 L58.273 10.185 L58.097 9.99 L58.06 9.811 L58.097 9.633 L58.273 9.437 L58.976 9.084 L59.62 8.582 L59.89 8.289 L60.264 7.511 L60.386 6.62 L60.386 5.507 L60.127 4.687 L59.879 4.277 L59.415 3.749 L58.8 3.388 L58.273 3.211 L57.277 3.024 L51.124 3.024 Z"/>
+          </g></symbol>
+  </svg>
+
   <!-- ============ 01 THE UNIT ============ -->
-  <section class="section" id="unit" aria-labelledby="unit-title">
-    <header class="head reveal">
-      <span class="tag">01</span>
-      <p class="head__label">Section 01 · The unit</p>
-      <h2 class="head__title" id="unit-title">No buttons. No screen. No lights.</h2>
-      <p class="head__intro">The shape carries the style: cut edges, clipped corners, sides that angle in toward the wall, a gap where the cover meets the base, and the EMBER wordmark. Every picture here is path-traced from the CAD model with Mitsuba 3, and lit like the room the unit is for: a lamp on the left and low sun from the right.</p>
+  <section class="section spread" id="unit" aria-labelledby="unit-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 01 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">01 · The unit · front view</p>
+      <div class="lock">
+        <h2 class="fit" id="unit-title"><span>No buttons, no screen,</span><span>no lights.</span></h2>
+        <p class="lock__tags"><span>Path-traced renders</span><span aria-hidden="true">·</span><span>Lit like the room</span></p>
+      </div>
+      <p class="spread__intro">The shape carries the style: cut edges, clipped corners, sides that angle in toward the wall, a gap where the cover meets the base, and the EMBER wordmark. Every picture is path-traced from the CAD model with Mitsuba 3, lit like the room the unit is for: a lamp on the left and low sun from the right.</p>
     </header>
 
-    <div class="gallery">
-      <figure class="frame frame--wide reveal">
-        <button class="frame__open" type="button" data-full="images/r-02-front-1600.webp" aria-label="Enlarge figure 1">
-          <img src="images/r-02-front-1600.webp" srcset="images/r-02-front-800.webp 800w, images/r-02-front-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 1200px" width="1600" height="1067" loading="lazy" alt="Ember seen straight from the front on a warm-lit wall.">
+    <div class="readout readout--wide reveal" data-readout>
+      <ol class="readout__col readout__col--l">
+        <li data-x="33.3" data-y="37.5"><b>Battery cover</b><span>the cells change with the unit on the wall</span></li>
+        <li data-x="37.9" data-y="46.2"><b>Finger indents</b><span>five round-bottomed grooves</span></li>
+        <li data-x="58.3" data-y="63.1"><b>Gap round the cover</b><span>3.0 mm wide, 2.6 mm deep</span></li>
+      </ol>
+      <figure class="readout__fig">
+        <button class="frame__open" type="button" data-full="images/r-02-front-1600.webp" aria-label="Enlarge the front view">
+          <img src="images/r-02-front-1600.webp" srcset="images/r-02-front-800.webp 800w, images/r-02-front-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 640px" width="1600" height="1067" loading="lazy" alt="Ember seen straight from the front on a warm-lit wall.">
         </button>
-        <figcaption><b>Fig. 1</b> Front. The battery cover is the panel on the left; the 01 tag is top right.</figcaption>
       </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-03-left-low-1600.webp" aria-label="Enlarge figure 2">
-          <img src="images/r-03-left-low-1600.webp" srcset="images/r-03-left-low-800.webp 800w, images/r-03-left-low-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Ember seen from the lower left.">
-        </button>
-        <figcaption><b>Fig. 2</b> From the lower left. The sides angle in toward the wall.</figcaption>
-      </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-04-side-right-1600.webp" aria-label="Enlarge figure 3">
-          <img src="images/r-04-side-right-1600.webp" srcset="images/r-04-side-right-800.webp 800w, images/r-04-side-right-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Ember seen from the right.">
-        </button>
-        <figcaption><b>Fig. 3</b> Right side. The facet text reads EMBER THERMAL DRIVE TC-01.</figcaption>
-      </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-05-top-port-1600.webp" aria-label="Enlarge figure 4">
-          <img src="images/r-05-top-port-1600.webp" srcset="images/r-05-top-port-800.webp 800w, images/r-05-top-port-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Close view of the port in the top of the case, with the thermostat plate's edge visible inside.">
-        </button>
-        <figcaption><b>Fig. 4</b> The top port. The thermostat plate's top edge stays open to the room, as it is with the original cover.</figcaption>
-      </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-07-bottom-port-1600.webp" aria-label="Enlarge figure 5">
-          <img src="images/r-07-bottom-port-1600.webp" srcset="images/r-07-bottom-port-800.webp 800w, images/r-07-bottom-port-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Close view of the port in the bottom of the case.">
-        </button>
-        <figcaption><b>Fig. 5</b> The bottom port, the same shape as the top one.</figcaption>
-      </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-08-cover-off-1600.webp" aria-label="Enlarge figure 6">
-          <img src="images/r-08-cover-off-1600.webp" srcset="images/r-08-cover-off-800.webp 800w, images/r-08-cover-off-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Ember with its battery cover removed, showing three AA cells.">
-        </button>
-        <figcaption><b>Fig. 6</b> Battery cover off. The cells change without taking the unit off the wall. (The cells sit in a stand-in pocket here, not the battery bay.)</figcaption>
-      </figure>
-      <figure class="frame reveal">
-        <button class="frame__open" type="button" data-full="images/r-09-cells-1600.webp" aria-label="Enlarge figure 7">
-          <img src="images/r-09-cells-1600.webp" srcset="images/r-09-cells-800.webp 800w, images/r-09-cells-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 600px" width="1600" height="1067" loading="lazy" alt="Close view of the three AA cells behind the removed battery cover.">
-        </button>
-        <figcaption><b>Fig. 7</b> Three AA cells in series.</figcaption>
-      </figure>
+      <ol class="readout__col readout__col--r">
+        <li data-x="74.3" data-y="23.1"><b>Corner clip</b><span>16 mm at 45 degrees, all four corners</span></li>
+        <li data-x="69.3" data-y="27.3"><b>Number tag</b><span>black, 01</span></li>
+        <li data-x="73.1" data-y="50"><b>Facet text</b><span>EMBER THERMAL DRIVE TC-01</span></li>
+        <li data-x="62.1" data-y="71"><b>Wordmark</b><span>Stop letters in a frame, dark orange</span></li>
+      </ol>
+    </div>
+    <div class="titleplate reveal">
+      <p class="titleplate__name">Wall case v6.6</p>
+      <p class="titleplate__sub">173.5 × 136.4 × 53.5 mm · designed, not printed</p>
     </div>
 
-    <div class="onwall reveal">
-      <div class="onwall__text">
-        <p class="label">In the room it is for</p>
-        <p>The render placed into two photos of the thermostat's wall, in place of its original cover, under the photos' own light. These are composites: the unit is not built yet.</p>
-      </div>
-      <figure class="frame">
-        <button class="frame__open" type="button" data-full="images/p-0201-1600.webp" aria-label="Enlarge figure 8">
-          <img src="images/p-0201-1600.webp" srcset="images/p-0201-800.webp 800w, images/p-0201-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 520px" width="1600" height="1200" loading="lazy" alt="Photo of a sunlit wall with the Ember render placed where the thermostat is.">
-        </button>
-        <figcaption><b>Fig. 8</b> Render in photo IMG_0201.</figcaption>
-      </figure>
-      <figure class="frame">
-        <button class="frame__open" type="button" data-full="images/p-0203-1600.webp" aria-label="Enlarge figure 9">
-          <img src="images/p-0203-1600.webp" srcset="images/p-0203-800.webp 800w, images/p-0203-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 520px" width="1600" height="1200" loading="lazy" alt="Photo of the wall from further back, with the Ember render on the thermostat and a light switch below it.">
-        </button>
-        <figcaption><b>Fig. 9</b> Render in photo IMG_0203, with the light switch below.</figcaption>
-      </figure>
-    </div>
+    <ol class="figs reveal">
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-03-left-low-1600.webp" aria-label="Enlarge figure A"><img src="images/r-03-left-low-800.webp" width="800" height="533" loading="lazy" alt="Ember seen from the lower left."></button><p><b>A</b>From the lower left. The sides angle in toward the wall.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-04-side-right-1600.webp" aria-label="Enlarge figure B"><img src="images/r-04-side-right-800.webp" width="800" height="533" loading="lazy" alt="Ember seen from the right."></button><p><b>B</b>Right side, with the facet text.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-05-top-port-1600.webp" aria-label="Enlarge figure C"><img src="images/r-05-top-port-800.webp" width="800" height="533" loading="lazy" alt="Close view of the port in the top of the case."></button><p><b>C</b>Top port. The plate's top edge stays open to the room, as with the original cover.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-07-bottom-port-1600.webp" aria-label="Enlarge figure D"><img src="images/r-07-bottom-port-800.webp" width="800" height="533" loading="lazy" alt="Close view of the port in the bottom of the case."></button><p><b>D</b>Bottom port, the same shape as the top one.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-08-cover-off-1600.webp" aria-label="Enlarge figure E"><img src="images/r-08-cover-off-800.webp" width="800" height="533" loading="lazy" alt="Ember with its battery cover removed, showing three AA cells."></button><p><b>E</b>Battery cover off. The cells sit in a stand-in pocket here, not the battery bay.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/r-09-cells-1600.webp" aria-label="Enlarge figure F"><img src="images/r-09-cells-800.webp" width="800" height="533" loading="lazy" alt="Close view of the three AA cells."></button><p><b>F</b>Three AA cells in series.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/p-0201-1600.webp" aria-label="Enlarge figure G"><img src="images/p-0201-800.webp" width="800" height="600" loading="lazy" alt="Photo of a sunlit wall with the Ember render placed where the thermostat is."></button><p><b>G</b>The render placed into a photo of the thermostat's wall. A composite: the unit is not built yet.</p></li>
+      <li class="fig"><button class="frame__open" type="button" data-full="images/p-0203-1600.webp" aria-label="Enlarge figure H"><img src="images/p-0203-800.webp" width="800" height="600" loading="lazy" alt="Photo of the wall from further back, with the Ember render on the thermostat and a light switch below it."></button><p><b>H</b>The same, from further back, with the light switch below.</p></li>
+    </ol>
   </section>
 
   <!-- ============ 02 WHAT IT DOES ============ -->
-  <section class="section" id="features" aria-labelledby="features-title">
-    <header class="head reveal">
-      <span class="tag">02</span>
-      <p class="head__label">Section 02 · What it does</p>
-      <h2 class="head__title" id="features-title">Turns the dial you already have.</h2>
-      <p class="head__intro">Ember fits on a line-voltage dial thermostat that switches electric in-floor heating. It has one job: turn that dial to off, or to on, when the Raspberry Pi tells it to.</p>
+  <section class="section spread" id="features" aria-labelledby="features-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 02 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">02 · What it does</p>
+      <div class="lock">
+        <h2 class="fit" id="features-title"><span>Turns the dial</span><span>you already have.</span></h2>
+        <p class="lock__tags"><span>One job</span><span aria-hidden="true">·</span><span>Off or on</span></p>
+      </div>
+      <p class="spread__intro">Ember fits on a line-voltage dial thermostat that switches electric in-floor heating. It turns that dial to off, or to on, when the Raspberry Pi tells it to.</p>
     </header>
 
-    <ul class="features">
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-01</p>
-        <h3>Uses the thermostat on the wall</h3>
-        <p>Ember replaces only the snap-on plastic cover of an 859M dial thermostat. The thermostat's metal plate and its two screws stay where they are.</p>
-      </li>
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-02</p>
-        <h3>On and off from the Raspberry Pi</h3>
-        <p>The Pi sends the command over Bluetooth Low Energy. A Seeed XIAO nRF52840 receives it and turns the dial with a 28BYJ-48 stepper motor.</p>
-      </li>
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-03</p>
-        <h3>Knows where the dial is</h3>
-        <p>An AS5600 magnetic sensor on the dial shaft reads its angle in steps of 0.088 degrees. If the angle does not change while the motor runs, the motor stops and the unit reports it.</p>
-      </li>
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-04</p>
-        <h3>Three AA cells</h3>
-        <p>About 2.4 years on alkaline cells when the heating switches 4 times a day from October to April (calculated). The cells change without taking the unit off the wall.</p>
-      </li>
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-05</p>
-        <h3>Comes off in one piece</h3>
-        <p>Loosen the two side screws and pull the unit straight off: case, motor, cord drive and sensor come away together. The sector is a push fit on the dial shaft, so the original knob goes back on.</p>
-      </li>
-      <li class="panel feature reveal">
-        <p class="feature__code"><i class="led is-on"></i>F-06</p>
-        <h3>Keeps clear of the mains parts</h3>
-        <p>The plate has openings that show the thermostat's mains-voltage parts. No screw, contact, magnet or wire goes near them, and solid plastic closes them off. The USB port faces the bottom wall, out of sight.</p>
-      </li>
+    <ul class="tboxes">
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-01</span><div class="gbox__in"><div class="gbox__face"><h3>Uses the thermostat on the wall</h3><p>Ember replaces only the snap-on plastic cover of an 859M dial thermostat. The metal plate and its two screws stay where they are.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-02</span><div class="gbox__in"><div class="gbox__face"><h3>On and off from the Raspberry Pi</h3><p>The Pi sends the command over Bluetooth Low Energy. A Seeed XIAO nRF52840 receives it and turns the dial with a 28BYJ-48 stepper motor.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-03</span><div class="gbox__in"><div class="gbox__face"><h3>Knows where the dial is</h3><p>An AS5600 magnetic sensor on the dial shaft reads its angle in steps of 0.088 degrees. If the angle does not change while the motor runs, the motor stops and the unit reports it.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-04</span><div class="gbox__in"><div class="gbox__face"><h3>Three AA cells</h3><p>About 2.4 years on alkaline cells when the heating switches 4 times a day from October to April (calculated). The cells change with the unit on the wall.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-05</span><div class="gbox__in"><div class="gbox__face"><h3>Comes off in one piece</h3><p>Loosen the two side screws and pull the unit straight off: case, motor, cord drive and sensor come away together. The sector is a push fit on the dial shaft, so the original knob goes back on.</p></div></div></li>
+      <li class="gbox gbox--flat reveal"><span class="gbox__tab">F-06</span><div class="gbox__in"><div class="gbox__face"><h3>Keeps clear of the mains parts</h3><p>No screw, contact, magnet or wire goes near the plate's openings, which show the thermostat's mains-voltage parts. Solid plastic closes them off. The USB port faces the bottom wall, out of sight.</p></div></div></li>
     </ul>
   </section>
 
   <!-- ============ 03 INSIDE ============ -->
-  <section class="section" id="inside" aria-labelledby="inside-title">
-    <header class="head reveal">
-      <span class="tag">03</span>
-      <p class="head__label">Section 03 · Inside</p>
-      <h2 class="head__title" id="inside-title">Everything in its place.</h2>
-      <p class="head__intro">Front view with the cover off, drawn from the CAD model of wall case v6.6. Every part below is placed in the model, and the build script reports any overlap between them. Choose a number to find the part.</p>
+  <section class="section spread" id="inside" aria-labelledby="inside-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 03 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">03 · Inside · front view, cover off</p>
+      <div class="lock">
+        <h2 class="fit" id="inside-title"><span>Everything</span><span>in its place.</span></h2>
+        <p class="lock__tags"><span>Cover off</span><span aria-hidden="true">·</span><span>Wall case v6.6</span></p>
+      </div>
+      <p class="spread__intro">Drawn from the CAD model. Every part here is placed in the model, and the build script reports any overlap between them.</p>
     </header>
 
-    <div class="inside reveal">
-      <div class="panel inside__drawing">
-        <div class="inside__plot">
-          <img src="images/d-inside-front.webp" width="1320" height="1060" loading="lazy" alt="Line drawing of the case from the front with the cover off, showing the battery bay, motor, sector, sensor, controller board and wires.">
-          <!-- Marker positions in % of the drawing (1320 x 1060), read from it by eye. -->
-          <button class="pin" type="button" style="--x:15.5%; --y:46.7%" data-part="1" aria-label="Part 1, battery bay">1</button>
-          <button class="pin" type="button" style="--x:20.6%; --y:16.2%" data-part="2" aria-label="Part 2, ULN2003 driver board">2</button>
-          <button class="pin" type="button" style="--x:37.5%; --y:43.8%" data-part="3" aria-label="Part 3, motor and capstan">3</button>
-          <button class="pin" type="button" style="--x:75.0%; --y:67.0%" data-part="4" aria-label="Part 4, sector">4</button>
-          <button class="pin" type="button" style="--x:61.4%; --y:44.3%" data-part="5" aria-label="Part 5, AS5600 sensor">5</button>
-          <button class="pin" type="button" style="--x:17.0%; --y:87.7%" data-part="6" aria-label="Part 6, XIAO nRF52840">6</button>
-          <button class="pin" type="button" style="--x:45.5%; --y:73.6%" data-part="7" aria-label="Part 7, wires">7</button>
-          <button class="pin" type="button" style="--x:94.7%; --y:19.0%" data-part="8" aria-label="Part 8, side screw">8</button>
-        </div>
-        <p class="drawing-note">Wall case v6.6 · front · cover off · 173.5 mm wide</p>
-      </div>
-      <ol class="parts">
-        <li data-part="1"><b>1</b><span><strong>Battery bay v1</strong> Three AA cells in series. Each contact sits in its own pocket, and the + pads are keyed so a cell put in backwards cannot touch them.</span></li>
-        <li data-part="2"><b>2</b><span><strong>ULN2003 driver board</strong> Switches the motor's four coils. The XIAO's pins cannot supply that current themselves.</span></li>
-        <li data-part="3"><b>3</b><span><strong>28BYJ-48 motor and capstan v6</strong> 42 mm left of the dial shaft.</span></li>
-        <li data-part="4"><b>4</b><span><strong>Sector v6</strong> On the dial shaft. The cord runs round its rim, and two sleds and two screw clamps hold the cord's ends.</span></li>
-        <li data-part="5"><b>5</b><span><strong>AS5600 angle sensor</strong> Centred on the dial shaft, its chip 2.0 mm in front of a magnet in the sector's hub.</span></li>
-        <li data-part="6"><b>6</b><span><strong>Seeed XIAO nRF52840</strong> Bottom left, pins to the front, with its USB-C socket 0.2 mm from the bottom wall.</span></li>
-        <li data-part="7"><b>7</b><span><strong>Wires</strong> Every wire routed in the model with its length, and kept clear of every part.</span></li>
-        <li data-part="8"><b>8</b><span><strong>Side screws</strong> One each side, 35 mm above the dial. Each pushes a plastic tongue onto the edge of the thermostat's plate.</span></li>
+    <div class="readout readout--wide reveal" data-readout>
+      <ol class="readout__col readout__col--l">
+        <li data-x="20.6" data-y="16.2"><b>ULN2003 driver board</b><span>switches the motor's four coils</span></li>
+        <li data-x="15.5" data-y="46.7"><b>Battery bay v1</b><span>three AA cells in series</span></li>
+        <li data-x="37.5" data-y="43.8"><b>28BYJ-48 motor and capstan v6</b><span>42 mm left of the dial shaft</span></li>
+        <li data-x="17" data-y="87.7"><b>Seeed XIAO nRF52840</b><span>USB-C socket 0.2 mm from the bottom wall</span></li>
       </ol>
+      <figure class="readout__fig readout__fig--dwg">
+        <img src="images/d-inside-front.webp" width="1320" height="1060" loading="lazy" alt="Line drawing of the case from the front with the cover off, showing the battery bay, motor, sector, sensor, controller board and wires.">
+      </figure>
+      <ol class="readout__col readout__col--r">
+        <li data-x="94.7" data-y="19"><b>Side screw</b><span>one each side, pushing a tongue onto the plate's edge</span></li>
+        <li data-x="61.4" data-y="44.3"><b>AS5600 angle sensor</b><span>2.0 mm in front of a magnet in the sector's hub</span></li>
+        <li data-x="75" data-y="67"><b>Sector v6</b><span>on the dial shaft; the cord runs round its rim</span></li>
+        <li data-x="45.5" data-y="73.6"><b>Wires</b><span>every wire routed in the model with its length</span></li>
+      </ol>
+    </div>
+    <div class="titleplate reveal">
+      <p class="titleplate__name">Wall case v6.6 · internals</p>
+      <p class="titleplate__sub">Positions from the model · ULN2003 and XIAO sizes are estimates</p>
     </div>
   </section>
 
   <!-- ============ 04 CORD DRIVE ============ -->
-  <section class="section" id="drive" aria-labelledby="drive-title">
-    <header class="head reveal">
-      <span class="tag">04</span>
-      <p class="head__label">Section 04 · Cord drive</p>
-      <h2 class="head__title" id="drive-title">6.30 turns of the motor for one turn of the dial.</h2>
-      <p class="head__intro">The motor turns a small grooved capstan. A braided cord 0.50 mm across is wrapped round the capstan, and its two ends are held on a sector (a slice of a disc) fixed to the dial shaft. The cord sits at a radius of 5.66 mm on the capstan and 35.66 mm on the sector, so the dial turns 6.30 times slower than the motor and gets 6.30 times its torque, less friction.</p>
+  <section class="section spread" id="drive" aria-labelledby="drive-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 04 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">04 · Cord drive · front view</p>
+      <div class="lock">
+        <h2 class="fit" id="drive-title"><span>6.30 motor turns</span><span>for one dial turn.</span></h2>
+        <p class="lock__tags"><span>0.50 <span class="unit">mm</span> cord</span><span aria-hidden="true">·</span><span>Ratio 6.30 : 1</span></p>
+      </div>
+      <p class="spread__intro">The motor turns a small grooved capstan. A braided cord 0.50 mm across is wrapped round it, and its two ends are held on a sector fixed to the dial shaft. The cord sits at a radius of 5.66 mm on the capstan and 35.66 mm on the sector, so the dial gets 6.30 times the motor's torque, less friction.</p>
     </header>
 
+    <div class="readout readout--wide reveal" data-readout>
+      <ol class="readout__col readout__col--l">
+        <li data-x="18.9" data-y="53.4"><b>Sled</b><span>a screw pulls it to tighten the cord</span></li>
+        <li data-x="21.4" data-y="79.7"><b>Screw clamp</b><span>holds each cord end</span></li>
+        <li data-x="15.6" data-y="81.9"><b>Rim hole</b><span>round and level, where the cord enters</span></li>
+      </ol>
+      <figure class="readout__fig readout__fig--dwg readout__fig--sq">
+        <img src="images/d-drive-v6.webp" width="1352" height="1254" loading="lazy" alt="Line drawing of capstan drive v6 from the front: the round capstan at the top, the sector below it with two sleds and the hub.">
+      </figure>
+      <ol class="readout__col readout__col--r">
+        <li data-x="49.9" data-y="10.6"><b>Capstan</b><span>on the motor shaft; a groove for the 0.50 mm cord</span></li>
+        <li data-x="49.9" data-y="24.7"><b>Cord face</b><span>radius 35.66 mm, between two lips</span></li>
+        <li data-x="94.9" data-y="69.8"><b>Sector rim</b><span>turns through 180 degrees</span></li>
+        <li data-x="49.9" data-y="70.2"><b>Hub</b><span>D hole, a push fit on the dial shaft</span></li>
+      </ol>
+    </div>
+    <div class="titleplate reveal">
+      <p class="titleplate__name">Capstan drive v6</p>
+      <p class="titleplate__sub">Sent to the printer 2026-10-16 · not yet fitted</p>
+    </div>
+
     <div class="drive reveal">
-      <div class="panel drive__plot">
-        <svg class="drivesvg" viewBox="-58 -56 112 112" role="img" aria-labelledby="drive-svg-title">
-          <title id="drive-svg-title">Capstan and sector, front view, to scale</title>
-          <g class="dv-scale" aria-hidden="true"></g>
-          <g class="dv-sector">
-            <path class="dv-slice" d=""/>
-            <path class="dv-cord" d=""/>
-            <g class="dv-sleds"></g>
-            <circle class="dv-hub" r="8"/>
-            <path class="dv-dhole" d="M -2.5 -1.5 A 3 3 0 1 1 2.5 -1.5 Z"/>
-          </g>
-          <g class="dv-capstan" transform="translate(-42 0)">
-            <g class="dv-capstan-turn">
-              <circle class="dv-lip" r="7.2"/>
-              <circle class="dv-wrap" r="5.66"/>
-              <line class="dv-notch" x1="0" y1="0" x2="0" y2="-7.2"/>
-              <circle class="dv-shaft" r="2.5"/>
+      <div class="gbox gbox--flat drive__model">
+        <span class="gbox__tab">Live model · to scale</span>
+        <div class="gbox__in"><div class="gbox__face">
+          <svg class="drivesvg" viewBox="-56 -57 114 114" role="img" aria-labelledby="drive-svg-title">
+            <title id="drive-svg-title">Capstan and sector, front view, to scale</title>
+            <g class="dv-scale" aria-hidden="true"></g>
+            <g class="dv-sector">
+              <path class="dv-slice" d=""/>
+              <path class="dv-cord" d=""/>
+              <g class="dv-sleds"></g>
+              <circle class="dv-hub" r="8"/>
+              <path class="dv-dhole" d="M -2.5 -1.5 A 3 3 0 1 1 2.5 -1.5 Z"/>
             </g>
-          </g>
-          <g class="dv-needle">
-            <line x1="0" y1="0" x2="0" y2="-45"/>
-            <circle r="3"/>
-          </g>
-        </svg>
-        <p class="drawing-note">Drawn to scale from the v6 numbers, shapes simplified. Shaft spacing 42 mm. Scale: degrees of travel from OFF.</p>
+            <g class="dv-capstan" transform="translate(-42 0)">
+              <g class="dv-capstan-turn">
+                <circle class="dv-lip" r="7.2"/>
+                <circle class="dv-wrap" r="5.66"/>
+                <line class="dv-notch" x1="0" y1="0" x2="0" y2="-7.2"/>
+                <circle class="dv-shaft" r="2.5"/>
+              </g>
+            </g>
+            <g class="dv-needle">
+              <line x1="0" y1="0" x2="0" y2="-45"/>
+              <circle r="3"/>
+            </g>
+          </svg>
+          <p class="drawing-note">Shapes simplified; sizes from the v6 numbers. Scale: degrees of travel from OFF.</p>
+        </div></div>
       </div>
 
       <div class="drive__controls">
-        <div class="readouts" aria-live="polite">
-          <div class="readout"><span>Dial travel</span><b data-out="travel">000°</b></div>
-          <div class="readout"><span>Capstan</span><b data-out="turns">0.00</b><small>turns</small></div>
-          <div class="readout"><span>Half steps</span><b data-out="steps">0</b></div>
-          <div class="readout"><span>Motor time</span><b data-out="time">0.0</b><small>s</small></div>
+        <div class="gbox drive__read">
+          <span class="gbox__tab">Readout</span>
+          <div class="gbox__in"><div class="gbox__face">
+            <dl class="readouts" aria-live="polite">
+              <div class="readout-cell"><dt>Dial travel</dt><dd data-out="travel">000°</dd></div>
+              <div class="readout-cell"><dt>Capstan turns</dt><dd data-out="turns">0.00</dd></div>
+              <div class="readout-cell"><dt>Half steps</dt><dd data-out="steps">0</dd></div>
+              <div class="readout-cell"><dt>Motor time, s</dt><dd data-out="time">0.0</dd></div>
+            </dl>
+            <p class="thermo" data-out="state"><i class="led"></i><span>Thermostat off</span></p>
+          </div></div>
         </div>
-        <p class="thermo" data-out="state"><i class="led"></i><span>Thermostat off</span></p>
         <label class="slider">
           <span class="label">Dial travel from OFF</span>
           <input type="range" min="0" max="180" step="1" value="0" data-in="travel">
@@ -301,262 +301,251 @@
           <button class="key" type="button" data-move="0">Move to OFF</button>
           <button class="key key--on" type="button" data-move="180">Move to ON</button>
         </div>
-        <p class="fine">The buttons play a move 10 times faster than the motor makes it. A full move is 12,902 half steps at 2.0 ms each: 25.8 s. The thermostat switches on 140 degrees past its LO stop, which is 120 degrees of travel from OFF. OFF is 20 degrees short of the LO stop, so the drive never presses the dial against it.</p>
+        <p class="fine">The buttons play a move 10 times faster than the motor makes it: a full move is 12,902 half steps at 2.0 ms each, 25.8 s. The thermostat switches on 140 degrees past its LO stop, 120 degrees of travel from OFF. OFF is 20 degrees short of the LO stop, so the drive never presses the dial against it.</p>
       </div>
     </div>
 
-    <div class="drivelog reveal">
-      <figure class="panel drivelog__drawing">
-        <img src="images/d-drive-v6.webp" width="1352" height="1254" loading="lazy" alt="Line drawing of capstan drive v6 from the front: the round capstan at the top, the sector below it with two sleds and the hub.">
-        <figcaption class="drawing-note">Capstan drive v6 · front view · from capstan_drive_v6.py</figcaption>
-      </figure>
-      <div>
-        <p class="label">Drive log</p>
-        <h3 class="sub">Six versions to keep a cord on a drum.</h3>
-        <ol class="log">
-          <li><b>v1</b><span>The cord slid off the edge of the sector: its face had no spare width.</span></li>
-          <li><b>v2</b><span>Lips on the sector kept it there, but the cord slid along the capstan, piled up at one end and came off.</span></li>
-          <li><b>v3</b><span>A lip at each end of the capstan.</span></li>
-          <li><b>v4</b><span>A sector for the wall unit, whose D hole takes the whole D part of the dial shaft. Not printed.</span></li>
-          <li><b>v5</b><span>Each cord end tightened by a screw-driven sled. Fitted on 2026-10-15: the sleds' 3.6 mm of take-up left about 5 mm of slack.</span></li>
-          <li class="is-current"><b>v6</b><span>A capstan groove sized for the 0.50 mm cord, with spare turns, and a screw clamp for each cord end. Sent to the printer on 2026-10-16; not yet fitted.</span></li>
-        </ol>
-      </div>
+    <div class="gbox gbox--flat drivelog reveal">
+      <span class="gbox__tab">Drive log · six versions</span>
+      <div class="gbox__in"><div class="gbox__face">
+        <dl class="gstats gstats--log">
+          <div><dt>v1:</dt><dd>The cord slid off the edge of the sector: its face had no spare width.</dd></div>
+          <div><dt>v2:</dt><dd>Lips on the sector kept it there, but the cord slid along the capstan, piled up at one end and came off.</dd></div>
+          <div><dt>v3:</dt><dd>A lip at each end of the capstan.</dd></div>
+          <div><dt>v4:</dt><dd>A sector for the wall unit, whose D hole takes the whole D part of the dial shaft. Not printed.</dd></div>
+          <div><dt>v5:</dt><dd>Each cord end tightened by a screw-driven sled. Fitted on 2026-10-15: the sleds' 3.6 mm of take-up left about 5 mm of slack.</dd></div>
+          <div class="is-current"><dt>v6:</dt><dd>A capstan groove sized for the 0.50 mm cord, with spare turns, and a screw clamp for each cord end. Sent to the printer on 2026-10-16; not yet fitted.</dd></div>
+        </dl>
+      </div></div>
     </div>
   </section>
 
   <!-- ============ 05 POWER ============ -->
-  <section class="section" id="power" aria-labelledby="power-title">
-    <header class="head reveal">
-      <span class="tag">05</span>
-      <p class="head__label">Section 05 · Power</p>
-      <h2 class="head__title" id="power-title">Three AA cells, no charger, no regulator.</h2>
-      <p class="head__intro">The cells feed the XIAO's battery pads and the motor driver directly. Between moves the motor coils and the angle sensor are switched off; only the radio stays on, so the Pi can connect.</p>
+  <section class="section spread" id="power" aria-labelledby="power-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 05 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">05 · Power · battery bay, three-quarter view</p>
+      <div class="lock">
+        <h2 class="fit" id="power-title"><span>Three AA cells.</span><span>No charger, no regulator.</span></h2>
+        <p class="lock__tags"><span>0.75 <span class="unit">mAh</span> a move</span><span aria-hidden="true">·</span><span>20 <span class="unit">µA</span> idle</span></p>
+      </div>
+      <p class="spread__intro">The cells feed the XIAO's battery pads and the motor driver directly. Between moves the motor coils and the angle sensor are switched off; only the radio stays on, so the Pi can connect.</p>
     </header>
 
-    <div class="power reveal">
-      <div class="panel power__readout">
-        <p class="label">Battery life, alkaline cells</p>
-        <p class="vfd"><b data-out="years">2.4</b><span>years</span></p>
-        <p class="vfd-sub" data-out="days">864 days at 4 moves a day, October to April</p>
-        <dl class="charge">
-          <div><dt>Charge on a day with moves</dt><dd data-out="mah">3.7 mAh</dd></div>
-          <div><dt>Share taken by the motor</dt><dd data-out="motor">81 %</dd></div>
-        </dl>
+    <div class="power">
+      <div class="readout readout--tall reveal" data-readout>
+        <ol class="readout__col readout__col--l">
+          <li data-x="33.6" data-y="40"><b>Tab on a post</b><span>one of three</span></li>
+          <li data-x="41.8" data-y="48.9"><b>+ contact</b><span>keyed: a reversed cell cannot touch it</span></li>
+        </ol>
+        <figure class="readout__fig readout__fig--dwg">
+          <img src="images/d-bay.webp" width="849" height="1351" loading="lazy" alt="Line drawing of the battery bay with three AA cells, seen from the front left.">
+        </figure>
+        <ol class="readout__col readout__col--r">
+          <li data-x="55.4" data-y="22.2"><b>ULN2003 driver board</b><span>behind the bay</span></li>
+          <li data-x="86" data-y="40.3"><b>Battery cover screw boss</b></li>
+          <li data-x="56.5" data-y="66.6"><b>Three AA cells in series</b></li>
+          <li data-x="60.3" data-y="89.2"><b>Each contact in its own pocket</b><span>PLA between pieces at different voltages</span></li>
+        </ol>
       </div>
 
-      <div class="panel power__chart">
-        <div class="chart-head">
-          <p class="label" id="chart-title">Years of battery life by moves a day</p>
-          <div class="switch" role="group" aria-label="When the heating is used">
-            <button type="button" data-mode="season" aria-pressed="true">October to April</button>
-            <button type="button" data-mode="year" aria-pressed="false">Every day</button>
-          </div>
+      <div class="titleplate reveal">
+        <p class="titleplate__name">Battery bay v1</p>
+        <p class="titleplate__sub">Modelled 2026-10-16 from estimates · not printed</p>
+      </div>
+      <div class="power__side">
+        <div class="gbox reveal">
+          <span class="gbox__tab">Ember 01 · power</span>
+          <div class="gbox__in"><div class="gbox__face">
+            <dl class="gstats">
+              <div><dt>Cells:</dt><dd>3 × AA, alkaline or NiMH</dd></div>
+              <div><dt>Voltage:</dt><dd>about 4.8 V with new alkaline cells</dd></div>
+              <div><dt>Regulator:</dt><dd>none</dd></div>
+              <div><dt>One move:</dt><dd>0.75 mAh <i>calculated</i></dd></div>
+              <div><dt>Between moves:</dt><dd>20 µA <i>estimate</i></dd></div>
+              <div><dt>Usable charge:</dt><dd>81 % of an alkaline cell, to the motor's 3.3 V cutoff</dd></div>
+              <div><dt>Cell change:</dt><dd>unit stays on the wall</dd></div>
+            </dl>
+          </div></div>
         </div>
-        <div class="bars" role="group" aria-labelledby="chart-title" data-bars></div>
-        <div class="axis" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4 years</span></div>
-        <p class="fine">Choose a bar. Calculated by battery_model.py from Energizer's published discharge curves for the E91 cell and the circuit's currents; not yet measured on the real unit.</p>
+
+        <div class="gbox gbox--flat reveal">
+          <span class="gbox__tab">Battery life · alkaline</span>
+          <div class="gbox__in"><div class="gbox__face">
+            <p class="vfd"><b data-out="years">2.4</b><span>years</span></p>
+            <p class="vfd-sub" data-out="days">864 days at 4 moves a day, October to April</p>
+            <div class="switch" role="group" aria-label="When the heating is used">
+              <button type="button" data-mode="season" aria-pressed="true">October to April</button>
+              <button type="button" data-mode="year" aria-pressed="false">Every day</button>
+            </div>
+            <div class="bars" role="group" aria-label="Years of battery life by moves a day" data-bars></div>
+            <div class="axis" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4 yr</span></div>
+            <dl class="charge">
+              <div><dt>Charge on a day with moves</dt><dd data-out="mah">3.7 mAh</dd></div>
+              <div><dt>Share taken by the motor</dt><dd data-out="motor">81 %</dd></div>
+            </dl>
+            <p class="fine">Choose a bar. Calculated by battery_model.py from Energizer's published curves for the E91 cell; not yet measured on the real unit.</p>
+          </div></div>
+        </div>
       </div>
     </div>
-
-    <ul class="facts reveal">
-      <li><b>0.75 mAh</b><span>for one move on average: 180 degrees of dial, 25.8 s of motor</span></li>
-      <li><b>20 µA</b><span>between moves (estimate): 0.48 mAh a day, plus 0.24 mAh a day the cells lose by themselves</span></li>
-      <li><b>81 <span class="pct">%</span></b><span>of an alkaline cell's charge is usable here: after that the voltage during a move falls below the motor's cutoff, 3.3 V for three cells (estimate)</span></li>
-      <li><b>0.7 points</b><span>average error of the battery percentage the Pi works out from the unit's voltage readings, over 200 simulated sets of cells</span></li>
-    </ul>
   </section>
 
   <!-- ============ 06 CIRCUIT ============ -->
-  <section class="section" id="circuit" aria-labelledby="circuit-title">
-    <header class="head reveal">
-      <span class="tag">06</span>
-      <p class="head__label">Section 06 · Circuit</p>
-      <h2 class="head__title" id="circuit-title">Fifteen wires, thirteen solder joints.</h2>
-      <p class="head__intro">A Seeed XIAO nRF52840 drives the motor through a ULN2003 board and reads the AS5600 sensor over I2C. The sensor is powered from two XIAO pins, only while it reads. The motor's current returns straight to the cells, not across the XIAO's board.</p>
+  <section class="section spread" id="circuit" aria-labelledby="circuit-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 06 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">06 · Circuit · every wire</p>
+      <div class="lock">
+        <h2 class="fit" id="circuit-title"><span>Fifteen wires.</span><span>Thirteen solder joints.</span></h2>
+        <p class="lock__tags"><span>XIAO nRF52840</span><span aria-hidden="true">·</span><span>ULN2003</span><span aria-hidden="true">·</span><span>AS5600</span></p>
+      </div>
+      <p class="spread__intro">The XIAO drives the motor through the ULN2003 board and reads the AS5600 sensor over I2C. The sensor is powered from two XIAO pins only while it reads. The motor's current returns straight to the cells, not across the XIAO's board.</p>
     </header>
 
-    <div class="circuit reveal">
-      <div class="panel patch">
-        <div class="patch__group">
-          <p class="label">Power</p>
-          <ul>
-            <li><span class="jack">Battery +</span><i></i><span class="jack">XIAO BAT+</span><em>soldered</em></li>
-            <li><span class="jack">Battery +</span><i></i><span class="jack">ULN2003 +</span><em>socket</em></li>
-            <li><span class="jack">Battery −</span><i></i><span class="jack">XIAO BAT−</span><em>soldered</em></li>
-            <li><span class="jack">Battery −</span><i></i><span class="jack">ULN2003 −</span><em>socket</em></li>
-          </ul>
-        </div>
-        <div class="patch__group">
-          <p class="label">Angle sensor</p>
-          <ul>
-            <li><span class="jack">XIAO D0 + D1</span><i></i><span class="jack">AS5600 VCC</span><em>socket</em></li>
-            <li><span class="jack">XIAO D4</span><i></i><span class="jack">AS5600 SDA</span><em>socket</em></li>
-            <li><span class="jack">XIAO D5</span><i></i><span class="jack">AS5600 SCL</span><em>socket</em></li>
-            <li><span class="jack">XIAO GND</span><i></i><span class="jack">AS5600 GND</span><em>socket</em></li>
-            <li><span class="jack">AS5600 GND</span><i></i><span class="jack">AS5600 DIR</span><em>soldered</em></li>
-          </ul>
-        </div>
-        <div class="patch__group">
-          <p class="label">Motor</p>
-          <ul>
-            <li><span class="jack">XIAO D7</span><i></i><span class="jack">ULN2003 IN1</span><em>jumper</em></li>
-            <li><span class="jack">XIAO D8</span><i></i><span class="jack">ULN2003 IN2</span><em>jumper</em></li>
-            <li><span class="jack">XIAO D9</span><i></i><span class="jack">ULN2003 IN3</span><em>jumper</em></li>
-            <li><span class="jack">XIAO D10</span><i></i><span class="jack">ULN2003 IN4</span><em>jumper</em></li>
-            <li><span class="jack">Motor plug</span><i></i><span class="jack">ULN2003 socket</span><em>plug</em></li>
-          </ul>
-        </div>
-        <p class="patch__spare"><span class="label">Spare</span> D2 · D3 · D6</p>
+    <div class="circuit">
+      <div class="gbox reveal">
+        <span class="gbox__tab">Wiring · from → to</span>
+        <div class="gbox__in"><div class="gbox__face">
+          <p class="wgroup">Power</p>
+          <dl class="wires">
+            <div><dt>Battery +</dt><dd>XIAO BAT+</dd><em>soldered</em></div>
+            <div><dt>Battery +</dt><dd>ULN2003 +</dd><em>socket</em></div>
+            <div><dt>Battery −</dt><dd>XIAO BAT−</dd><em>soldered</em></div>
+            <div><dt>Battery −</dt><dd>ULN2003 −</dd><em>socket</em></div>
+          </dl>
+          <p class="wgroup">Angle sensor</p>
+          <dl class="wires">
+            <div><dt>XIAO D0 + D1</dt><dd>AS5600 VCC</dd><em>socket</em></div>
+            <div><dt>XIAO D4</dt><dd>AS5600 SDA</dd><em>socket</em></div>
+            <div><dt>XIAO D5</dt><dd>AS5600 SCL</dd><em>socket</em></div>
+            <div><dt>XIAO GND</dt><dd>AS5600 GND</dd><em>socket</em></div>
+            <div><dt>AS5600 GND</dt><dd>AS5600 DIR</dd><em>soldered</em></div>
+          </dl>
+          <p class="wgroup">Motor</p>
+          <dl class="wires">
+            <div><dt>XIAO D7 to D10</dt><dd>ULN2003 IN1 to IN4</dd><em>jumpers</em></div>
+            <div><dt>Motor plug</dt><dd>ULN2003 socket</dd><em>plug</em></div>
+          </dl>
+          <p class="wspare">Spare pins: D2 · D3 · D6</p>
+        </div></div>
       </div>
 
       <div class="circuit__side">
-        <div class="warning">
+        <div class="warning reveal">
           <p class="warning__title">Take one cell out before connecting USB</p>
           <p>The battery pads also feed the XIAO's lithium charger. With USB connected it would try to charge the AA cells, which can make them leak.</p>
         </div>
-        <ul class="notes">
-          <li>Three fresh alkaline cells give about 4.8 V. Every part on the XIAO's battery pads is rated for at least 6 V, so there is about 1 V to spare. Four cells (about 6.4 V) would be over that limit.</li>
-          <li>The step signals use D7 to D10. The sensor wires leave along the XIAO's USB-C end and the motor wires from the top of the other row, so the two groups do not cross.</li>
-          <li>Wires with a socket at one end are female-to-female jumpers cut in half, so no other hookup wire is needed.</li>
-        </ul>
+        <div class="gbox gbox--flat reveal">
+          <span class="gbox__tab">Notes</span>
+          <div class="gbox__in"><div class="gbox__face">
+            <dl class="gstats">
+              <div><dt>Pad limit:</dt><dd>every part on the XIAO's battery pads is rated for at least 6 V; three new alkaline cells give about 4.8 V. Four cells (about 6.4 V) would be over it.</dd></div>
+              <div><dt>Routing:</dt><dd>the sensor wires leave along the XIAO's USB-C end and the motor wires from the top of the other row, so the two groups do not cross.</dd></div>
+              <div><dt>Wire stock:</dt><dd>female-to-female jumpers, cut in half where a wire has a socket at one end only.</dd></div>
+            </dl>
+          </div></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============ 07 DESIGN HISTORY ============ -->
-  <section class="section" id="history" aria-labelledby="history-title">
-    <header class="head reveal">
-      <span class="tag">07</span>
-      <p class="head__label">Section 07 · Design history</p>
-      <h2 class="head__title" id="history-title">Thirteen versions in one day.</h2>
-      <p class="head__intro">On 2026-10-15 each version of the case was built by its own script, saved with its own STEP file, opened in Autodesk Fusion and reviewed. The verdict on each card is the one given at the time. The lamp is lit on each version that was liked or carried forward.</p>
+  <section class="section spread" id="history" aria-labelledby="history-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 07 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">07 · Design history · wall case</p>
+      <div class="lock">
+        <h2 class="fit" id="history-title"><span>Thirteen versions</span><span>in one day.</span></h2>
+        <p class="lock__tags"><span>v1 to v6.6</span><span aria-hidden="true">·</span><span>15 October 2026</span></p>
+      </div>
+      <p class="spread__intro">Each version of the case was built by its own script, saved with its own STEP file, opened in Autodesk Fusion and reviewed. The verdict on each card is the one given at the time; the lamp is lit on each version that was liked or carried forward.</p>
     </header>
 
     <ol class="history">
-      <li class="panel card reveal">
-        <img src="images/d-v1.webp" width="1177" height="1351" loading="lazy" alt="Line drawing of case v1.">
-        <p class="card__ver"><i class="led"></i>v1</p>
-        <p>One box: slanted front, three colour stripes, a grille and a ring panel over the dial.</p>
-        <p class="card__verdict">Too much like the 1980s, not enough futurism.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v2.webp" width="1221" height="1351" loading="lazy" alt="Line drawing of case v2.">
-        <p class="card__ver"><i class="led"></i>v2</p>
-        <p>Separate raised forms: a battery pod and an eight-sided dial pod.</p>
-        <p class="card__verdict">Not reviewed; reference images came instead.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v3.webp" width="1154" height="1351" loading="lazy" alt="Line drawing of case v3.">
-        <p class="card__ver"><i class="led"></i>v3</p>
-        <p>A flat cover in a deeper base, a large plain disc over the dial, round vent holes.</p>
-        <p class="card__verdict">Not interesting enough: wanted interesting edges and corners, and sides that angle in.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v4.webp" width="1106" height="1351" loading="lazy" alt="Line drawing of case v4.">
-        <p class="card__ver"><i class="led is-on"></i>v4</p>
-        <p>The sides angle in toward the wall; the front edges are cut by different amounts; an L-shaped battery cover.</p>
-        <p class="card__verdict">Liked. Saved as a favourite.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v5.webp" width="1351" height="735" loading="lazy" alt="Line drawing of case v5 seen from below.">
-        <p class="card__ver"><i class="led"></i>v5 <small>seen from below</small></p>
-        <p>No disc. Top and bottom angle in steeply, leaving the plate's edges open to the room.</p>
-        <p class="card__verdict">Interesting, but the angle is too steep and goes too far in.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v6.webp" width="1351" height="727" loading="lazy" alt="Line drawing of case v6 seen from below.">
-        <p class="card__ver"><i class="led is-on"></i>v6 <small>seen from below</small></p>
-        <p>Flat top and bottom, with a port over each of the plate's edges.</p>
-        <p class="card__verdict">Loved. Saved as a favourite.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v7.webp" width="1351" height="684" loading="lazy" alt="Line drawing of case v7 seen from below.">
-        <p class="card__ver"><i class="led"></i>v7 <small>seen from below</small></p>
-        <p>Three tries at a new direction: asymmetric cuts, a tower and pod, then a hull with a fin and a drum over the dial.</p>
-        <p class="card__verdict">Still too close to the earlier designs.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v6.2.webp" width="1351" height="727" loading="lazy" alt="Line drawing of case v6.2 seen from below.">
-        <p class="card__ver"><i class="led is-on"></i>v6.1 – v6.2 <small>seen from below</small></p>
-        <p>Back to v6: EMBER on the front, finger indents, an open gap where cover meets base. Then the Stop letters in a frame.</p>
-        <p class="card__verdict">The design to go with.</p>
-      </li>
-      <li class="panel card reveal">
-        <img src="images/d-v6.5.webp" width="1171" height="1351" loading="lazy" alt="Line drawing of case v6.5.">
-        <p class="card__ver"><i class="led is-on"></i>v6.3 – v6.5</p>
-        <p>Fitted to the thermostat as measured with calipers; side screws; the same 16 mm clip on all four corners.</p>
-        <p class="card__verdict">Looks good; wanted the screws on opposite sides.</p>
-      </li>
-      <li class="panel card card--current reveal">
-        <img src="images/d-v6.6.webp" width="1351" height="1069" loading="lazy" alt="Line drawing of case v6.6 from the front.">
-        <p class="card__ver"><i class="led is-on"></i>v6.6 <small>working version</small></p>
-        <p>One side screw each side, directly opposite; a lip and a 3.0 mm gap all round. Changed in place from here on.</p>
-        <p class="card__verdict">Right, and moving in the direction wanted.</p>
-      </li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led"></i>v1</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v1.webp" width="1177" height="1351" loading="lazy" alt="Line drawing of case v1."><p>One box: slanted front, three colour stripes, a grille and a ring panel over the dial.</p><p class="verdict"><b>Verdict:</b> too much like the 1980s, not enough futurism.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led"></i>v2</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v2.webp" width="1221" height="1351" loading="lazy" alt="Line drawing of case v2."><p>Separate raised forms: a battery pod and an eight-sided dial pod.</p><p class="verdict"><b>Verdict:</b> not reviewed; reference images came instead.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led"></i>v3</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v3.webp" width="1154" height="1351" loading="lazy" alt="Line drawing of case v3."><p>A flat cover in a deeper base, a large plain disc over the dial, round vent holes.</p><p class="verdict"><b>Verdict:</b> not interesting enough; wanted interesting edges and sides that angle in.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led is-on"></i>v4</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v4.webp" width="1106" height="1351" loading="lazy" alt="Line drawing of case v4."><p>The sides angle in toward the wall; the front edges are cut by different amounts; an L-shaped battery cover.</p><p class="verdict"><b>Verdict:</b> liked; saved as a favourite.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led"></i>v5</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v5.webp" width="1351" height="735" loading="lazy" alt="Line drawing of case v5 seen from below."><p>No disc. Top and bottom angle in steeply, leaving the plate's edges open to the room. Seen from below.</p><p class="verdict"><b>Verdict:</b> interesting, but the angle is too steep and goes too far in.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led is-on"></i>v6</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v6.webp" width="1351" height="727" loading="lazy" alt="Line drawing of case v6 seen from below."><p>Flat top and bottom, with a port over each of the plate's edges. Seen from below.</p><p class="verdict"><b>Verdict:</b> loved; saved as a favourite.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led"></i>v7</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v7.webp" width="1351" height="684" loading="lazy" alt="Line drawing of case v7 seen from below."><p>Three tries at a new direction: asymmetric cuts, a tower and pod, then a hull with a fin. Seen from below.</p><p class="verdict"><b>Verdict:</b> still too close to the earlier designs.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led is-on"></i>v6.1 – v6.2</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v6.2.webp" width="1351" height="727" loading="lazy" alt="Line drawing of case v6.2 seen from below."><p>Back to v6: EMBER on the front, finger indents, an open gap where cover meets base; then the Stop letters in a frame.</p><p class="verdict"><b>Verdict:</b> the design to go with.</p></div></div></li>
+      <li class="gbox gbox--flat card reveal"><span class="gbox__tab"><i class="led is-on"></i>v6.3 – v6.5</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v6.5.webp" width="1171" height="1351" loading="lazy" alt="Line drawing of case v6.5."><p>Fitted to the thermostat as measured with calipers; side screws; the same 16 mm clip on all four corners.</p><p class="verdict"><b>Verdict:</b> looks good; wanted the screws on opposite sides.</p></div></div></li>
+      <li class="gbox gbox--flat card card--current reveal"><span class="gbox__tab"><i class="led is-on"></i>v6.6</span><div class="gbox__in"><div class="gbox__face"><img src="images/d-v6.6.webp" width="1351" height="1069" loading="lazy" alt="Line drawing of case v6.6 from the front."><p>One side screw each side, directly opposite; a lip and a 3.0 mm gap all round. Changed in place from here on.</p><p class="verdict"><b>Verdict:</b> right, and moving in the direction wanted.</p></div></div></li>
     </ol>
   </section>
 
   <!-- ============ 08 SPECIFICATIONS ============ -->
-  <section class="section" id="spec" aria-labelledby="spec-title">
-    <header class="head reveal">
-      <span class="tag">08</span>
-      <p class="head__label">Section 08 · Specifications</p>
-      <h2 class="head__title" id="spec-title">Data plate.</h2>
-      <p class="head__intro">Each value is marked with where it comes from: the design (the CAD model), a calculation, a datasheet, or an estimate.</p>
+  <section class="section spread" id="spec" aria-labelledby="spec-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 08 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">08 · Specifications</p>
+      <div class="lock">
+        <h2 class="fit" id="spec-title"><span>Specifications,</span><span>Ember 01.</span></h2>
+        <p class="lock__tags"><span>Design</span><span aria-hidden="true">·</span><span>Calculated</span><span aria-hidden="true">·</span><span>Datasheet</span><span aria-hidden="true">·</span><span>Estimate</span></p>
+      </div>
+      <p class="spread__intro">Each value is marked with where it comes from: the design (the CAD model), a calculation, a datasheet, or an estimate.</p>
     </header>
 
-    <div class="plate reveal">
-      <div class="plate__top">
-        <span class="dymo">EMBER · MODEL 01</span>
-        <span class="plate__tag">01</span>
-      </div>
-      <dl class="plate__rows">
-        <div><dt>Case</dt><dd>173.5 × 136.4 × 53.5 mm; 157.5 × 122.4 mm on the wall</dd><em>design</em></div>
-        <div><dt>Fits</dt><dd>859M line-voltage dial thermostat, in place of its snap-on cover</dd><em>design</em></div>
-        <div><dt>Mounting</dt><dd>On the thermostat's metal plate; two M3 side screws press plastic tongues onto its edges</dd><em>design</em></div>
-        <div><dt>Motor</dt><dd>28BYJ-48 stepper, ULN2003 driver board</dd><em>datasheet</em></div>
-        <div><dt>Drive</dt><dd>Capstan and sector, 0.50 mm braided cord (85 lb), ratio 6.30 : 1</dd><em>design</em></div>
-        <div><dt>Dial travel</dt><dd>180° from OFF; OFF is 20° short of the LO stop</dd><em>design</em></div>
-        <div><dt>One move</dt><dd>12,902 half steps, 25.8 s at 2.0 ms per half step</dd><em>calculated</em></div>
-        <div><dt>Controller</dt><dd>Seeed XIAO nRF52840</dd><em>datasheet</em></div>
-        <div><dt>Radio</dt><dd>Bluetooth Low Energy, commands from a Raspberry Pi</dd><em>design</em></div>
-        <div><dt>Angle sensor</dt><dd>AS5600 magnetic, 12-bit: 0.088° per count</dd><em>datasheet</em></div>
-        <div><dt>Power</dt><dd>3 × AA, alkaline or NiMH, about 4.8 V with new alkaline cells</dd><em>datasheet</em></div>
-        <div><dt>Charge per move</dt><dd>0.75 mAh on average</dd><em>calculated</em></div>
-        <div><dt>Between moves</dt><dd>20 µA</dd><em>estimate</em></div>
-        <div><dt>Battery life</dt><dd>2.4 years at 4 moves a day, October to April; 1.7 years at 4 moves every day (alkaline)</dd><em>calculated</em></div>
-        <div><dt>Material</dt><dd>PLA, printed on a Bambu Lab P1S with a 0.4 mm nozzle</dd><em>design</em></div>
-        <div><dt>Fasteners</dt><dd>M3 screws into brass heat-set inserts, 5 mm across, 4 mm long</dd><em>design</em></div>
-        <div><dt>Units</dt><dd>One to three to be built</dd><em>plan</em></div>
-      </dl>
+    <div class="gbox spec reveal">
+      <span class="gbox__tab">Ember 01 · environmental control unit</span>
+      <div class="gbox__in"><div class="gbox__face">
+        <dl class="gstats gstats--spec">
+          <div><dt>Case:</dt><dd>173.5 × 136.4 × 53.5 mm; 157.5 × 122.4 mm on the wall</dd><em>design</em></div>
+          <div><dt>Fits:</dt><dd>859M line-voltage dial thermostat, in place of its snap-on cover</dd><em>design</em></div>
+          <div><dt>Mounting:</dt><dd>on the thermostat's metal plate; two M3 side screws press plastic tongues onto its edges</dd><em>design</em></div>
+          <div><dt>Motor:</dt><dd>28BYJ-48 stepper, ULN2003 driver board</dd><em>datasheet</em></div>
+          <div><dt>Drive:</dt><dd>capstan and sector, 0.50 mm braided cord (85 lb), ratio 6.30 : 1</dd><em>design</em></div>
+          <div><dt>Dial travel:</dt><dd>180° from OFF; OFF is 20° short of the LO stop</dd><em>design</em></div>
+          <div><dt>One move:</dt><dd>12,902 half steps, 25.8 s at 2.0 ms per half step</dd><em>calculated</em></div>
+          <div><dt>Controller:</dt><dd>Seeed XIAO nRF52840</dd><em>datasheet</em></div>
+          <div><dt>Radio:</dt><dd>Bluetooth Low Energy, commands from a Raspberry Pi</dd><em>design</em></div>
+          <div><dt>Angle sensor:</dt><dd>AS5600 magnetic, 12-bit: 0.088° per count</dd><em>datasheet</em></div>
+          <div><dt>Power:</dt><dd>3 × AA, alkaline or NiMH, about 4.8 V with new alkaline cells</dd><em>datasheet</em></div>
+          <div><dt>Charge per move:</dt><dd>0.75 mAh on average</dd><em>calculated</em></div>
+          <div><dt>Between moves:</dt><dd>20 µA</dd><em>estimate</em></div>
+          <div><dt>Battery life:</dt><dd>2.4 years at 4 moves a day, October to April; 1.7 years at 4 moves every day (alkaline)</dd><em>calculated</em></div>
+          <div><dt>Material:</dt><dd>PLA, printed on a Bambu Lab P1S with a 0.4 mm nozzle</dd><em>design</em></div>
+          <div><dt>Fasteners:</dt><dd>M3 screws into brass heat-set inserts, 5 mm across, 4 mm long</dd><em>design</em></div>
+          <div><dt>Units:</dt><dd>one to three to be built</dd><em>plan</em></div>
+        </dl>
+      </div></div>
     </div>
   </section>
 
   <!-- ============ 09 STATUS ============ -->
-  <section class="section" id="status" aria-labelledby="status-title">
-    <header class="head reveal">
-      <span class="tag">09</span>
-      <p class="head__label">Section 09 · Status · 2026-10-17</p>
-      <h2 class="head__title" id="status-title">Where it stands.</h2>
-      <p class="head__intro">Ember is in progress. A lit lamp is done, a half-lit lamp is under way, and a dark lamp is not started or not tested.</p>
+  <section class="section spread" id="status" aria-labelledby="status-title">
+    <div class="spread__frame fr" aria-hidden="true"><span class="fr__label spread__plate"><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg></span><span class="fr__label spread__code">Section 09 / 09</span></div>
+    <header class="spread__head reveal">
+      <p class="crt">09 · Status</p>
+      <div class="lock">
+        <h2 class="fit" id="status-title"><span>Where it stands,</span><span>17 October 2026.</span></h2>
+        <p class="lock__tags"><span>Done</span><span aria-hidden="true">·</span><span>Under way</span><span aria-hidden="true">·</span><span>Not yet</span></p>
+      </div>
+      <p class="spread__intro">Ember is in progress. A lit lamp is done, a half-lit lamp is under way, and a dark lamp is not started or not tested.</p>
     </header>
 
-    <ul class="panel status reveal">
-      <li><i class="led is-on"></i><b>Motor on the desk</b><span>ESP32 and ULN2003 board: the motor turned both ways on 2026-10-13.</span></li>
-      <li><i class="led is-on"></i><b>Cord sleds v5</b><span>Printed and fitted on 2026-10-15.</span></li>
-      <li><i class="led is-half"></i><b>Capstan v6 and sector v6</b><span>Sent to the printer on 2026-10-16; not yet fitted.</span></li>
-      <li><i class="led is-half"></i><b>Wall case v6.6</b><span>Designed and fitted to the measured thermostat; not printed. The cover's fastening is not designed.</span></li>
-      <li><i class="led is-half"></i><b>Battery bay v1</b><span>Modelled from estimates; waiting for caliper values of a cell and the contacts.</span></li>
-      <li><i class="led is-half"></i><b>Wiring</b><span>Planned and routed in the model with every wire's length; not built.</span></li>
-      <li><i class="led"></i><b>Motor torque on three AA cells</b><span>Not tested on the real dial.</span></li>
-      <li><i class="led"></i><b>Battery life</b><span>Calculated; not measured.</span></li>
-    </ul>
+    <div class="gbox status reveal">
+      <span class="gbox__tab">Status board</span>
+      <div class="gbox__in"><div class="gbox__face">
+        <ul class="statusrows">
+          <li><i class="led is-on"></i><b>Motor on the desk</b><span>ESP32 and ULN2003 board: the motor turned both ways on 2026-10-13.</span></li>
+          <li><i class="led is-on"></i><b>Cord sleds v5</b><span>Printed and fitted on 2026-10-15.</span></li>
+          <li><i class="led is-half"></i><b>Capstan v6 and sector v6</b><span>Sent to the printer on 2026-10-16; not yet fitted.</span></li>
+          <li><i class="led is-half"></i><b>Wall case v6.6</b><span>Designed and fitted to the measured thermostat; not printed. The cover's fastening is not designed.</span></li>
+          <li><i class="led is-half"></i><b>Battery bay v1</b><span>Modelled from estimates; waiting for caliper values of a cell and the contacts.</span></li>
+          <li><i class="led is-half"></i><b>Wiring</b><span>Planned and routed in the model with every wire's length; not built.</span></li>
+          <li><i class="led"></i><b>Motor torque on three AA cells</b><span>Not tested on the real dial.</span></li>
+          <li><i class="led"></i><b>Battery life</b><span>Calculated; not measured.</span></li>
+        </ul>
+      </div></div>
+    </div>
   </section>
 
   <footer class="foot">
-    <p class="crt">EMBER · ENVIRONMENTAL CONTROL UNIT · MODEL 01</p>
-    <p>A personal project. One to three units will be built. Not for sale.</p>
+    <div class="foot__rule" aria-hidden="true"><span></span><svg viewBox="0 0 63.686 19"><use href="#wm"/></svg><span></span></div>
+    <p class="lock__tags foot__tags"><span>A personal project</span><span aria-hidden="true">·</span><span>One to three units</span><span aria-hidden="true">·</span><span>Not for sale</span></p>
     <p class="fine">Renders: Mitsuba 3, from the build123d CAD model. Wordmark: letters traced from the Stop typeface (Aldo Novarese, 1970s).</p>
     <a class="replay foot__top" href="#top">Back to top</a>
   </footer>

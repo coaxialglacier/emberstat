@@ -1,2 +1,7 @@
 .DS_Store
 __pycache__/
+
+# Review pages for design directions, and the drawings only they use; not part of the site.
+concepts/
+images/d-bay-end.webp
+images/d-side-v6.5.webp

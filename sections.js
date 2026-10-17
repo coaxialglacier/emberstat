@@ -1,6 +1,6 @@
 // The sections below the opening view: the section index, appear-on-scroll,
-// enlarged pictures, the parts markers, the cord drive model and the
-// battery life chart.
+// enlarged pictures, the spread borders, the labelled readouts, the fitted
+// headlines, the cord drive model and the battery life chart.
 (() => {
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -44,18 +44,141 @@
   // A click on the dark area round the picture closes it.
   box.addEventListener('click', (event) => { if (event.target === box) box.close(); });
 
-  // ---------- Inside: markers and the parts list light up together ----------
-  const pins = document.querySelectorAll('.pin');
-  const parts = document.querySelectorAll('.parts li');
-  const light = (n) => {
-    pins.forEach((p) => p.classList.toggle('is-active', p.dataset.part === n));
-    parts.forEach((p) => p.classList.toggle('is-active', p.dataset.part === n));
-  };
-  [...pins, ...parts].forEach((el) => {
-    el.addEventListener('mouseenter', () => light(el.dataset.part));
-    el.addEventListener('focus', () => light(el.dataset.part));
-    el.addEventListener('click', () => light(el.dataset.part));
-  });
+  // ---------- Spread borders ----------
+  // The wordmark's line round each spread: 45-degree corners, and a break in
+  // the top edge round every .fr__label (the EMBER plate, the section code).
+  // Line width and corner cut come from the CSS variables --line and --cut.
+  const ns = 'http://www.w3.org/2000/svg';
+
+  function drawFrame(fr) {
+    const w = fr.clientWidth;
+    const h = fr.clientHeight;
+    if (!w || !h) return;
+    const style = getComputedStyle(fr);
+    const line = parseFloat(style.getPropertyValue('--line')) || 1.5;
+    const cut = parseFloat(style.getPropertyValue('--cut')) || 18;
+    let svg = fr.querySelector(':scope > .fr__line');
+    if (!svg) {
+      svg = document.createElementNS(ns, 'svg');
+      svg.classList.add('fr__line');
+      svg.append(document.createElementNS(ns, 'path'));
+      fr.prepend(svg);
+    }
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    // The corner cut on the line's centre keeps the line the same width round each corner.
+    const half = line / 2;
+    const k = cut - half * (2 - Math.SQRT2);
+    const [a, b, c, d] = [half, w - half, half, h - half];
+    const box = fr.getBoundingClientRect();
+    const gaps = [...fr.querySelectorAll(':scope > .fr__label')]
+      .map((label) => { const r = label.getBoundingClientRect(); return [r.left - box.left - 10, r.right - box.left + 10]; })
+      .sort((p, q) => p[0] - q[0]);
+    const tops = [];
+    let x = a + k;
+    for (const [g0, g1] of gaps) {
+      if (g0 > x) tops.push([x, g0]);
+      x = Math.max(x, g1);
+    }
+    const f = (v) => v.toFixed(1);
+    let path = `M${f(x)} ${f(c)} L${f(b - k)} ${f(c)} L${f(b)} ${f(c + k)} L${f(b)} ${f(d - k)} L${f(b - k)} ${f(d)} L${f(a + k)} ${f(d)} L${f(a)} ${f(d - k)} L${f(a)} ${f(c + k)} L${f(a + k)} ${f(c)}`;
+    tops.forEach(([s0, s1], i) => {
+      path += i === 0 && s0 <= a + k + 0.5 ? ` L${f(s1)} ${f(c)}` : ` M${f(s0)} ${f(c)} L${f(s1)} ${f(c)}`;
+    });
+    if (!gaps.length) path += ' Z';
+    svg.firstChild.setAttribute('d', path);
+  }
+
+  // ---------- Readouts: parts labelled with lines at right angles ----------
+  // Each label sits level with its part where it can, pushed down when two
+  // would overlap; the line runs from a dot on the part to the label. On
+  // narrow screens the CSS hides the lines and shows numbered marks instead.
+  function layoutReadout(r) {
+    const fig = r.querySelector('.readout__fig');
+    const img = fig.querySelector('img');
+    const items = [...r.querySelectorAll('.readout__col li')];
+    if (!r.dataset.marked) {
+      items.forEach((li, i) => {
+        const mark = document.createElement('span');
+        mark.className = 'readout__mark';
+        mark.textContent = i + 1;
+        mark.setAttribute('aria-hidden', 'true');
+        mark.style.setProperty('--x', `${li.dataset.x}%`);
+        mark.style.setProperty('--y', `${li.dataset.y}%`);
+        fig.append(mark);
+      });
+      r.dataset.marked = '1';
+    }
+    let svg = r.querySelector(':scope > .readout__lines');
+    if (!svg) {
+      svg = document.createElementNS(ns, 'svg');
+      svg.classList.add('readout__lines');
+      svg.setAttribute('aria-hidden', 'true');
+      r.append(svg);
+    }
+    svg.replaceChildren();
+    items.forEach((li) => { li.style.top = ''; });
+    r.querySelectorAll('.readout__col').forEach((col) => { col.style.minHeight = ''; });
+    if (getComputedStyle(svg).display === 'none') return;
+
+    const rb = r.getBoundingClientRect();
+    const fb = img.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${rb.width} ${rb.height}`);
+    const ANCHOR = 8;                 // half the height of a label's first line
+    for (const col of r.querySelectorAll('.readout__col')) {
+      const left = col.classList.contains('readout__col--l');
+      const cb = col.getBoundingClientRect();
+      const colTop = cb.top - rb.top;
+      const edge = left ? cb.right - rb.left + 8 : cb.left - rb.left - 8;
+      const jog = left ? edge + 16 : edge - 16;
+      const list = [...col.children].map((li) => ({
+        li,
+        px: fb.left - rb.left + (li.dataset.x / 100) * fb.width,
+        py: fb.top - rb.top + (li.dataset.y / 100) * fb.height,
+      })).sort((p, q) => p.py - q.py);
+      let floor = -Infinity;
+      for (const it of list) {
+        const top = Math.max(it.py - ANCHOR, floor);
+        it.li.style.top = `${top - colTop}px`;
+        floor = top + it.li.offsetHeight + 12;
+        const ly = top + ANCHOR;
+        const pts = Math.abs(ly - it.py) < 1
+          ? [[it.px, it.py], [edge, it.py]]
+          : [[it.px, it.py], [jog, it.py], [jog, ly], [edge, ly]];
+        const lineEl = document.createElementNS(ns, 'polyline');
+        lineEl.setAttribute('points', pts.map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`).join(' '));
+        const dot = document.createElementNS(ns, 'circle');
+        dot.setAttribute('cx', it.px.toFixed(1));
+        dot.setAttribute('cy', it.py.toFixed(1));
+        dot.setAttribute('r', '3');
+        svg.append(lineEl, dot);
+      }
+      col.style.minHeight = `${Math.max(0, floor - colTop)}px`;
+    }
+  }
+
+  // ---------- Headlines: the longest line fills the lockup's width ----------
+  function fit() {
+    document.querySelectorAll('.lock .fit').forEach((el) => {
+      el.style.fontSize = '200px';
+      const widest = Math.max(...[...el.children].map((s) => s.scrollWidth));
+      el.style.fontSize = `${Math.min(58, (200 * el.clientWidth) / widest).toFixed(2)}px`;
+    });
+  }
+
+  const frames = document.querySelectorAll('.spread__frame');
+  const readouts = document.querySelectorAll('[data-readout]');
+  let queued = false;
+  function layout() {
+    queued = false;
+    fit();
+    frames.forEach(drawFrame);
+    readouts.forEach(layoutReadout);
+  }
+  const relayout = () => { if (!queued) { queued = true; requestAnimationFrame(layout); } };
+  new ResizeObserver(relayout).observe(document.body);
+  document.fonts.ready.then(relayout);
+  readouts.forEach((r) => r.querySelector('img').addEventListener('load', relayout));
+  layout();
 
   // ---------- Cord drive model ----------
   // Sizes in mm from capstan_drive_v6.py and PLAN.md: shaft spacing 42, cord
@@ -72,7 +195,6 @@
   const SLICE = [-35, 215];         // the sector's arc, local angles
 
   const svg = document.querySelector('.drivesvg');
-  const ns = 'http://www.w3.org/2000/svg';
   const pt = (r, deg) => [r * Math.cos(deg * Math.PI / 180), r * Math.sin(deg * Math.PI / 180)];
   const f = (v) => v.toFixed(3);
   const arcPath = (r, d0, d1) => {
