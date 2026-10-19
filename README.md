@@ -1,6 +1,6 @@
 # emberstat
 
-Website for Ember, published with GitHub Pages at https://emberstat.jacklewissimmons.com.
+Website for Ember, published with GitHub Pages at https://emberstat.com.
 
 - `index.html`, `style.css`, `opening.js` and `sections.js` are the page.
 - `images/` holds the WebP images, made by `tools/make_images.py`.
