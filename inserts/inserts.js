@@ -24,6 +24,11 @@
   const INSERT_L = 4.0;            // the insert's length
   const COLOURS = { scene: 0x15130f, piece: 0xd6cdbb, middle: 0xe6c4a3, edge: 0x3d382f, brass: 0xc99a4b,
     ring: 0xffb24d, dash: 0xece5d6 };
+  // The first round (Jack, 2026-10-20): only the inserts needed to test that
+  // the base stays on the thermostat plate (the joints that hold the three
+  // pieces together and both side screws) and that the motor turns the
+  // capstan drive (the motor posts). The rest wait.
+  const FIRST_ROUND = ['joint', 'left_screw', 'right_screw', 'motor'];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fmt = v => String(Math.round(v * 10) / 10);
   const $ = id => document.getElementById(id);
@@ -69,11 +74,13 @@
     .catch(e => { msg.hidden = false; msg.textContent = 'The model did not load (' + e.message + '). Reload the page to try again.'; });
 
   function start(data) {
-    const inserts = data.inserts.map((ins, i) => Object.assign({}, ins, { i: i, n: i + 1 }));
+    const inserts = data.inserts.filter(ins => FIRST_ROUND.indexOf(ins.group) >= 0)
+      .map((ins, i) => Object.assign({}, ins, { i: i, n: i + 1 }));
+    const later = data.inserts.length - inserts.length;
     const N = inserts.length;
 
     // ----- Saved ticks and step (this browser only) -----
-    const KEY = 'ember-base-' + data.version + '-inserts';
+    const KEY = 'ember-base-' + data.version + '-inserts-first-round';
     const done = new Set();
     let step = -1;
     try {
@@ -99,7 +106,8 @@
       'Every hole is deeper than the insert (1.0 deeper, 1.5 at the joint seats), so an insert pushed on goes too far. Stop when its top reaches the level on its card.',
       'Do the joint seats (' + numList(nums('joint')) + ') and the left side screw block (' + numList(nums('left_screw'))
         + ') before the pieces are joined. Once joined, the middle piece\'s tabs sit over the seats and the left piece stands close round the block.',
-      'Some tops sit at the bottom of a counterbore, and the iron\'s insert tip has to follow them down: 6.2 across at the joint seats and ULN2003 posts, 5.9 at the cover screw blocks.'
+      'At the joint seats the insert\'s top sits at the bottom of a round recess 6.2 across, and the iron\'s insert tip has to follow it down.',
+      'The other ' + later + ' inserts (cover screws, ULN2003 board, battery bay, XIAO clamp and AS5600 bridge) are not needed for this test and are left out here.'
     ].forEach(t => { const li = document.createElement('li'); li.textContent = t; $('notes').appendChild(li); });
 
     const listEl = $('list');
@@ -151,6 +159,8 @@
       ins.led = b;
     });
     $('step-total').textContent = N;
+    $('about-h').textContent = 'Where the ' + N + ' inserts go';
+    $('all-h').textContent = 'All ' + N + ', piece by piece';
 
     // ----- The step card -----
     function renderCard() {
