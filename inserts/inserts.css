@@ -1,0 +1,370 @@
+/* Ember: base insert map.
+   A working page for the bench, made for a phone first: the 3D view at the
+   top and the current step's card right under it, so one insert at a time
+   needs no scrolling. On wide screens the view stays on the left and the
+   card, the notes and the full list run down the right.
+   Colours and type follow the main site (../style.css). */
+
+:root {
+  --ink: #0b0a09;
+  --charcoal: #1c1a18;
+  --charcoal-line: #34312c;
+  --scene: #15130f;           /* behind the 3D view, a step up from the page */
+  --beige: #d6cdbb;
+  --beige-2: #b3aa99;
+  --beige-dim: #8f877a;
+  --text: #ece5d6;
+  --amber: #ffb24d;
+  --amber-dim: #5a3a14;
+  --ember: #b84d0f;
+  --brass: #c99a4b;
+
+  --mono: 'Space Mono', ui-monospace, Menlo, Consolas, monospace;
+  --wide: 'Michroma', 'Eurostile', 'Arial Black', sans-serif;
+
+  --side: max(16px, env(safe-area-inset-left, 0px));
+  --side-r: max(16px, env(safe-area-inset-right, 0px));
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { background: var(--ink); color: var(--beige-2); -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 14px/1.55 var(--mono); overflow-x: clip; }
+button { font: inherit; color: inherit; }
+a { color: var(--amber); }
+:focus-visible { outline: 1px solid var(--amber); outline-offset: 2px; }
+
+/* ---------- Top bar ---------- */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) var(--side-r) 12px var(--side);
+  border-bottom: 1px solid var(--charcoal-line);
+}
+.top__home {
+  font: 15px/1 var(--wide);
+  letter-spacing: .12em;
+  color: var(--beige);
+  text-decoration: none;
+}
+.top__home::before { content: '\2039'; margin-right: 8px; color: var(--beige-dim); }
+.top__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255, 140, 30, .4);
+}
+
+/* ---------- Work area ---------- */
+main { max-width: 1320px; margin: 0 auto; }
+.work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  padding: 12px var(--side-r) 0 var(--side);
+}
+.stage { display: grid; gap: 6px; min-width: 0; }
+.view {
+  position: relative;
+  height: 42svh;
+  min-height: 250px;
+  max-height: 560px;
+  overflow: hidden;
+  background: var(--scene);
+  border: 1px solid var(--charcoal-line);
+  touch-action: none;
+}
+.view canvas { display: block; width: 100%; height: 100%; }
+.view__msg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--beige-dim);
+}
+.view__fit { position: absolute; right: 8px; bottom: 8px; }
+.hint { margin: 0; font-size: 11px; color: var(--beige-dim); }
+
+/* Piece switch, over the view's top left. */
+.seg { position: absolute; top: 8px; left: 8px; display: flex; border: 1px solid var(--charcoal-line); background: rgba(11, 10, 9, .82); }
+.seg__b {
+  padding: 7px 9px 6px;
+  border: 0;
+  background: none;
+  font: 10px/1 var(--wide);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--beige-dim);
+  cursor: pointer;
+}
+.seg__b + .seg__b { border-left: 1px solid var(--charcoal-line); }
+.seg__b[aria-selected="true"] { background: var(--beige); color: var(--ink); }
+
+/* Numbers over the inserts in the view. */
+.badges { position: absolute; inset: 0; pointer-events: none; }
+.badge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--ink);
+  font: 700 11px/1 var(--mono);
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--scene);
+}
+.badge.is-done { background: var(--charcoal); color: var(--beige-dim); box-shadow: 0 0 0 1px var(--charcoal-line); }
+.badge.is-dim { opacity: .5; }
+.badge.is-on {
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  font-size: 14px;
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--scene), 0 0 0 4px var(--amber), 0 0 16px rgba(255, 150, 40, .7);
+}
+.badge.is-on.is-done { background: var(--beige); color: var(--ink); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--charcoal-line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--beige);
+  font: 12px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn--small { min-height: 30px; padding: 0 10px; font-size: 10.5px; background: rgba(11, 10, 9, .82); color: var(--beige-dim); }
+.btn--icon { width: 48px; padding: 0; font-size: 14px; color: var(--beige-dim); }
+.btn--main {
+  flex: 1;
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 700;
+}
+.btn--main.is-undo { background: transparent; color: var(--amber); }
+.btn:active { translate: 0 1px; }
+.link { border: 0; background: none; padding: 4px; font-size: 11px; color: var(--beige-dim); text-decoration: underline; cursor: pointer; }
+
+/* ---------- The step card: a box with a title tab, as on the main site ---------- */
+.side { display: grid; gap: 18px; min-width: 0; align-content: start; }
+.card { --cut: 12px; position: relative; isolation: isolate; padding-top: 11px; }
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 11px 0 0 0;
+  translate: 6px 6px;
+  z-index: -1;
+  background: var(--ember);
+  clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+}
+.card__in {
+  padding: 1.5px;
+  background: var(--beige);
+  clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+}
+.card__face {
+  --c: calc(var(--cut) - .6px);
+  display: grid;
+  gap: 8px;
+  padding: 20px 14px 10px;
+  background: var(--ink);
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+}
+.card__tab {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  pointer-events: none;
+}
+.card__tab > span {
+  padding: 5px 10px 4px;
+  background: var(--beige);
+  color: var(--ink);
+  font: 10px/1.1 var(--wide);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.card__tab b { font-weight: 400; }
+.card__name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font: 400 14px/1.3 var(--wide);
+  color: var(--text);
+  text-wrap: balance;
+}
+.dot {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--ink);
+  font: 700 14px/1 var(--mono);
+  box-shadow: 0 0 12px rgba(255, 150, 40, .45);
+}
+.card.is-done .dot { background: var(--charcoal); color: var(--beige-dim); box-shadow: inset 0 0 0 1px var(--charcoal-line); }
+.chip {
+  justify-self: start;
+  margin: 0;
+  padding: 2px 8px 1px;
+  border: 1px solid var(--charcoal-line);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--beige-dim);
+}
+.chip .is-side { color: var(--amber); }
+.facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 10px; margin: 0; font-size: 12.5px; line-height: 1.45; }
+.facts dt { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--beige-dim); padding-top: 2px; }
+.facts dd { margin: 0; color: var(--beige); }
+.warn { margin: 0; padding: 7px 10px; border-left: 2px solid var(--amber); font-size: 12px; color: var(--amber); background: rgba(255, 178, 77, .06); }
+.actions { display: flex; gap: 8px; }
+
+/* One lamp per insert: lit when pressed in, ringed for the current step. */
+.leds { display: flex; gap: 2px; }
+.leds button {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 16px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.leds i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2a2118;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5), inset 0 1px 1px rgba(255, 255, 255, .06);
+}
+.leds .is-done i {
+  background: radial-gradient(circle at 35% 35%, #ffe2a8, var(--amber) 45%, #b4600f 100%);
+  box-shadow: 0 0 7px rgba(255, 150, 40, .6);
+}
+.leds .is-on i { outline: 1px solid var(--beige); outline-offset: 2px; }
+.leds .gap { flex: 0 0 6px; }
+.all__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+
+/* ---------- Pull-out slider ---------- */
+.pull { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--beige-dim); }
+.pull input { flex: 1; min-width: 0; accent-color: var(--amber); }
+.pull output { min-width: 10ch; text-align: right; color: var(--beige); font-variant-numeric: tabular-nums; }
+
+/* ---------- Notes and the full list ---------- */
+.crt {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-shadow: 0 0 1px rgba(255, 210, 150, .9), 0 0 9px rgba(255, 140, 30, .5);
+}
+.about, .all { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--charcoal-line); }
+.about p { margin: 0; font-size: 13px; }
+.about__h { margin: 0; font: 400 15px/1.35 var(--wide); color: var(--text); text-wrap: balance; }
+.notes { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 13px; }
+
+.piece { display: grid; gap: 6px; margin-top: 10px; }
+.piece h3 { margin: 0; font: 400 12px/1.3 var(--wide); letter-spacing: .06em; text-transform: uppercase; color: var(--beige); }
+.piece h3 span { color: var(--beige-dim); margin-left: 8px; font-family: var(--mono); letter-spacing: .1em; }
+.piece > p { margin: 0; font-size: 12.5px; color: var(--beige-dim); }
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(214, 205, 187, .1); }
+.row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(214, 205, 187, .1);
+  cursor: pointer;
+}
+.row.is-on { background: rgba(255, 178, 77, .07); }
+.row__n {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--ink);
+  font: 700 11px/1 var(--mono);
+}
+.row.is-done .row__n { background: var(--charcoal); color: var(--beige-dim); box-shadow: inset 0 0 0 1px var(--charcoal-line); }
+.row__name { color: var(--text); font-size: 13px; }
+.row__top { font-size: 12px; color: var(--beige-dim); }
+.row.is-done .row__name, .row.is-done .row__top { opacity: .55; }
+.row__tick { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--beige-dim); cursor: pointer; padding-top: 2px; }
+.row__tick input { width: 20px; height: 20px; margin: 0; accent-color: var(--amber); }
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 18px var(--side-r) calc(env(safe-area-inset-bottom, 0px) + 28px) var(--side);
+  border-top: 1px solid var(--charcoal-line);
+  font-size: 11px;
+  color: var(--beige-dim);
+}
+.foot p { margin: 0; max-width: 64ch; }
+
+@media (max-width: 599px) { .hint { display: none; } }
+
+/* ---------- Wide screens: the view on the left, staying in sight ---------- */
+@media (min-width: 900px) {
+  .work { grid-template-columns: minmax(0, 1.45fr) minmax(340px, 1fr); gap: 24px; padding-top: 18px; }
+  .stage { position: sticky; top: 14px; align-self: start; }
+  .view { height: calc(100svh - 90px); max-height: 820px; }
+  .card__face { padding: 26px 20px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .btn:active { translate: none; } }

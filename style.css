@@ -933,6 +933,7 @@ body::after {
 .statusrows li:last-child { border-bottom: 0; }
 .statusrows b { font-weight: 700; color: var(--text); }
 .statusrows span { color: var(--beige-2); }
+.statusrows span a { color: var(--amber); }
 
 /* ---------- Footer ---------- */
 .foot {
