@@ -14,6 +14,11 @@ Website for Ember, published with GitHub Pages at https://emberstat.com.
   `tools/make_insert_map.py` from the drawing in
   `hardware/cad/wall_case/v6.6/` (rebuild that first with its
   `base_inserts_diagram.py`).
+- `build/` is the build guide (https://emberstat.com/build/): the 18 steps of
+  building the wall unit, each with a 3D model, labelled pictures, drawings
+  and checkboxes. `build/index.html` is a copy of
+  `hardware/soldering_guide.html` made by `tools/make_build_guide.py` (rebuild
+  the guide first with `hardware/cad/wall_case/v6.6/soldering_guide_model.py`).
 - `CNAME` holds the custom domain. GitHub Pages reads it; do not delete it.
 
 The tools read renders and CAD drawings from the Ember project folder that
