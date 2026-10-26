@@ -250,6 +250,23 @@ body::after {
 .replay:hover { color: var(--amber); border-color: var(--amber-dim); }
 .replay:focus-visible { outline: 1px solid var(--amber); outline-offset: 2px; }
 
+/* Build notes: links to the build guide and the base insert map, shown from the start. */
+.notes { display: flex; gap: 8px; }
+.note {
+  padding: 6px 10px 6px 12px;
+  border: 1px solid var(--amber-dim);
+  border-radius: 2px;
+  color: var(--beige);
+  font: 11px/1 var(--mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.note:hover { color: var(--amber); border-color: var(--amber); }
+.note:focus-visible { outline: 1px solid var(--amber); outline-offset: 2px; }
+
 /* ---------- Wordmark ---------- */
 
 .wordmark {
@@ -558,6 +575,12 @@ body::after {
 .index li a.is-current { color: var(--beige); }
 .index li a.is-current b { color: var(--amber); text-shadow: 0 0 8px rgba(255, 140, 30, .6); }
 .index a:focus-visible { outline: 1px solid var(--amber); outline-offset: 2px; }
+.index__notes { display: flex; gap: 2px; padding-left: 14px; border-left: 1px solid rgba(214, 205, 187, .14); }
+.index__notes a { padding: 9px 10px; border-radius: 2px; color: var(--amber); text-decoration: none; white-space: nowrap; transition: color .2s; }
+.index__notes a:hover { color: var(--beige); }
+/* Only where they fit beside the section links: with the numbers alone (to 1180 px) down to 900 px, and with
+   the section names from 1500 px. The bar at the top of the page always has them. */
+@media (max-width: 899px), (min-width: 1181px) and (max-width: 1499px) { .index__notes { display: none; } }
 
 @media (max-width: 1180px) { .index li a span { display: none; } }
 @media (max-width: 480px) {
